@@ -1,0 +1,113 @@
+site_name: BMS Specification
+site_url: https://your-site-url.com
+site_description: Complete documentation for Battery Management System
+docs_dir: Simtestlab
+
+#nav:
+#  - Home: index.md
+#  - Blog:
+#    - blog/index.md
+#  - Specifications:
+#    - Hardware:
+#      - Specifications/Hardware/Cycle counters copy.md
+#    - Software:
+#      - Architecture: Specifications/Software/Architecture.md
+#      - Cell Balancing: Specifications/Software/Cell Balancing.md
+#      - Contactor Control: Specifications/Software/ContactorControl.md
+#      - Current Limits: Specifications/Software/Current Limits.md
+#      - Current Integrator: Specifications/Software/CurrentIntegrator.md
+#      - Cycle Counters: Specifications/Software/Cycle counters.md
+#      - LFP SoC: Specifications/Software/LFP_Soc.md
+#      - Limits Protection: Specifications/Software/Limits violation protection.md
+#      - Signal Processing: Specifications/Software/SignalPreProcessing.md
+#    - Design:
+#      - Battery Module: Specifications/Design/Battery module.md
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.footer
+    - navigation.tabs
+    - navigation.expand
+    - navigation.sections
+    - navigation.tracking
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.tooltips
+    - content.status
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: lime
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  - pymdownx.mark
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.smartsymbols
+  - pymdownx.extra
+  - pymdownx.arithmatex:
+      generic: true
+      inline_syntax:
+        - dollar
+        - round
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: vegalite
+          class: vegalite
+          format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/vega@5
+  - https://cdn.jsdelivr.net/npm/vega-lite@5
+  - https://cdn.jsdelivr.net/npm/vega-embed@6
+  - https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/mermaid_config.js
+
+extra_css:
+  - styles/extra.css
+
+plugins:
+  - search
+  - blog
+  - charts
+
+copyright: Copyright &copy; 2020-2025 by Simtestlab Sweden AB
+
+extra:
+  generator: false
+  status:
+    draft: In draft
+    review: In review
+    approved: Approved
+    deprecated: Deprecated
