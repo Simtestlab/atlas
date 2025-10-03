@@ -14,8 +14,9 @@ jobs:
       - name: Checkout Repo A (atlas)
         uses: actions/checkout@v3
         with:
-          submodules: recursive   # fetch all submodules recursively
-          fetch-depth: 0          # full history if you need it
+          token: ${{ secrets.GH_TOKEN }}  # Use token to access private submodules
+          submodules: recursive           # fetch all submodules recursively
+          fetch-depth: 0                  # full history if you need it
 
       # Optional: Keep Netlify config files safe
       - name: Preserve Netlify Config
