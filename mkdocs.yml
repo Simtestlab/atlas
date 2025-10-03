@@ -7,7 +7,7 @@ nav:
   - Blog:
       - blog/index.md
   - Project Manager: ProjectManagement/ProjectManager.md
-  - BMS Software:
+  - BMS Application:
       - bms_software/docs/index.md
       - ... | bms_software/docs/**
 theme:
