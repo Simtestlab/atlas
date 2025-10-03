@@ -1,9 +1,10 @@
-name: Mirror Atlas Repo to Private Repo v2
+name: Mirror Atlas Repo to Private Repo v2 (DISABLED)
 
-on:
-  push:
-    branches:
-      - mkdocs-enabled-submodules-added   # only trigger on this branch
+# DISABLED: Only using EC2 deployment now
+# on:
+#   push:
+#     branches:
+#       - mkdocs-enabled-submodules-added   # only trigger on this branch
 
 jobs:
   mirror:

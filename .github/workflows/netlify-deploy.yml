@@ -1,12 +1,13 @@
-name: Netlify Deployment
+name: Netlify Deployment (DISABLED)
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+# DISABLED: Only using EC2 deployment now
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
 
 jobs:
   build-and-deploy:
