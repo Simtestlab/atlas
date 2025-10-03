@@ -1,0 +1,40 @@
+name: Mirror Atlas Repo to Private Repo
+
+on:
+  push:
+    branches:
+      - mkdocs-enabled-submodules-added   # only trigger on this branch
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout Repo A with submodules
+      - name: Checkout Repo A (atlas)
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive   # fetch all submodules recursively
+          fetch-depth: 0          # full history if you need it
+
+      # Optional: Keep Netlify config files safe
+      - name: Preserve Netlify Config
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/simtestlab-se/atlas_deploy.git old_repo || true
+          cp -r old_repo/netlify.toml . || true
+          cp -r old_repo/_redirects . || true
+
+      # Push snapshot to Repo B
+      - name: Push to Repo B
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          rm -rf .git
+          git init
+          git add .
+          git commit -m "Mirror from atlas branch: mkdocs-enabled-submodules-added @ ${GITHUB_SHA}"
+          git branch -M main
+
+          git remote add target https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/simtestlab-se/atlas_deploy.git
+          git push --force target main
