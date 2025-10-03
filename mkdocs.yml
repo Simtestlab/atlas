@@ -3,6 +3,7 @@ site_url: https://your-site-url.com
 site_description: Complete documentation for Battery Management System
 docs_dir: Simtestlab
 
+ 
 #nav:
 #  - Home: index.md
 #  - Blog:
@@ -100,6 +101,9 @@ plugins:
   - search
   - blog
   - charts
+  - exclude:
+      glob:
+        - "bms_software/BmsMaster/Dave*"
 
 copyright: Copyright &copy; 2020-2025 by Simtestlab Sweden AB
 

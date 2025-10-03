@@ -46,3 +46,14 @@
 .md-status[data-md-status="draft"]::before {
   background-color: #2196F3; /* blue */
 }
+
+
+.mermaid {
+    transform: scaleX(1.25);  /* zoom horizontally */
+     transform-origin: top left;
+    min-width: 5000px;  /* adjust to timeline length */
+
+}
+.mermaid-wrapper {
+    overflow-x: auto;
+}
