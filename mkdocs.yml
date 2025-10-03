@@ -12,7 +12,7 @@ nav:
       - ... | bms_software/docs/**
 theme:
   name: material
-  custom_dir: Simtestlab/custom_theme
+  custom_dir: simtestlab/custom_theme
   font:
     text: Merriweather Sans
     code: Red Hat Mono
