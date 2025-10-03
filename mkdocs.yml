@@ -1,70 +1,55 @@
-site_name: BMS Specification
+site_name: Simtestlab
 site_url: https://your-site-url.com
-site_description: Complete documentation for Battery Management System
-docs_dir: Simtestlab
-
- 
-#nav:
-#  - Home: index.md
-#  - Blog:
-#    - blog/index.md
-#  - Specifications:
-#    - Hardware:
-#      - Specifications/Hardware/Cycle counters copy.md
-#    - Software:
-#      - Architecture: Specifications/Software/Architecture.md
-#      - Cell Balancing: Specifications/Software/Cell Balancing.md
-#      - Contactor Control: Specifications/Software/ContactorControl.md
-#      - Current Limits: Specifications/Software/Current Limits.md
-#      - Current Integrator: Specifications/Software/CurrentIntegrator.md
-#      - Cycle Counters: Specifications/Software/Cycle counters.md
-#      - LFP SoC: Specifications/Software/LFP_Soc.md
-#      - Limits Protection: Specifications/Software/Limits violation protection.md
-#      - Signal Processing: Specifications/Software/SignalPreProcessing.md
-#    - Design:
-#      - Battery Module: Specifications/Design/Battery module.md
-
+site_description: Complete documentation for simtestlab
+docs_dir: simtestlab
+nav:
+  - Home: index.md
+  - Blog:
+      - blog/index.md
+  - Project Manager: ProjectManagement/ProjectManager.md
+  - BMS Software:
+      - bms_software/docs/index.md
+      - ... | bms_software/docs/**
 theme:
   name: material
-  language: en
+  custom_dir: Simtestlab/custom_theme
+  font:
+    text: Merriweather Sans
+    code: Red Hat Mono
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
   features:
     - navigation.footer
-    - navigation.tabs
-    - navigation.expand
-    - navigation.sections
-    - navigation.tracking
-    - toc.integrate
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.tabs.link
-    - content.code.annotation
-    - content.code.copy
-    - content.tooltips
-    - content.status
   palette:
-    - scheme: default
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
-      primary: teal
-      accent: purple
+    # Dark Mode
     - scheme: slate
       toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
-      primary: teal
-      accent: lime
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: green
+      accent: deep purple
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: blue
+      accent: deep orange
 
 markdown_extensions:
+  - attr_list
   - admonition
   - pymdownx.details
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist
   - pymdownx.mark
   - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.emoji
+  - pymdownx.snippets:
+      base_path: [docs]
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.keys
   - pymdownx.magiclink
   - pymdownx.caret
@@ -77,6 +62,9 @@ markdown_extensions:
         - dollar
         - round
   - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
       use_pygments: true
   - pymdownx.superfences:
       custom_fences:
@@ -86,6 +74,8 @@ markdown_extensions:
         - name: vegalite
           class: vegalite
           format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
+  - toc:
+      toc_depth: 0
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/vega@5
@@ -94,21 +84,18 @@ extra_javascript:
   - https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-extra_css:
-  - styles/extra.css
 
 plugins:
   - search
+  - awesome-pages
   - blog
   - charts
-  - exclude:
-      glob:
-        - "bms_software/BmsMaster/Dave*"
 
 copyright: Copyright &copy; 2020-2025 by Simtestlab Sweden AB
 
 extra:
   generator: false
+  comments: true
   status:
     draft: In draft
     review: In review
