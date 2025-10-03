@@ -51,7 +51,7 @@
 .mermaid {
     transform: scaleX(1.25);  /* zoom horizontally */
      transform-origin: top left;
-    min-width: 5000px;  /* adjust to timeline length */
+    min-width: 1500px;  /* adjust to timeline length */
 
 }
 .mermaid-wrapper {
