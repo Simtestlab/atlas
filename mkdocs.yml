@@ -6,7 +6,8 @@ nav:
   - Home: index.md
   - Blog:
       - blog/index.md
-  - Project Manager: ProjectManagement/ProjectManager.md
+  - Project Manager: 
+      - ... | ProjectManagement/**
   - BMS Application:
       - bms_software/Specifications/index.md
       - ... | bms_software/Specifications/**
