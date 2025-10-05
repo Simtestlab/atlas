@@ -2,3 +2,7 @@
 	path = simtestlab/bms_software
 	url = https://github.com/Simtestlab/bms_master.git
 	branch = main
+[submodule "simtestlab/bms_unit_test"]
+	path = simtestlab/bms_unit_test
+	url = https://github.com/Simtestlab/bms_unit_test.git
+	branch = main
