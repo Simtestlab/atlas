@@ -9,7 +9,6 @@ nav:
   - Project Manager: 
       - ... | ProjectManagement/**
   - BMS Application:
-      - bms_software/Specifications/index.md
       - ... | bms_software/Specifications/**
 theme:
   name: material
@@ -110,5 +109,3 @@ extra:
     approved: Approved
     deprecated: Deprecated
 
-extra_css:
-  - styles/extra.css
