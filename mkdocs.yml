@@ -109,3 +109,6 @@ extra:
     approved: Approved
     deprecated: Deprecated
 
+extra_css:
+  - styles/extra.css
+
