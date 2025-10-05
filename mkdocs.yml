@@ -6,16 +6,17 @@ nav:
   - Home: index.md
   - Blog:
       - blog/index.md
-  - Project Manager: ProjectManagement/ProjectManager.md
+  - Project Manager: 
+      - ... | ProjectManagement/**
   - BMS Application:
-      - bms_software/docs/index.md
-      - ... | bms_software/docs/**
+      - bms_software/Specifications/index.md
+      - ... | bms_software/Specifications/**
 theme:
   name: material
   custom_dir: simtestlab/custom_theme
   font:
     text: Merriweather Sans
-    code: Red Hat Mono
+    code: "Fira Code, Menlo, Monaco, Consolas, monospace"
   logo: assets/logo.png
   favicon: assets/favicon.ico
   features:
@@ -26,14 +27,14 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Dark mode
-      primary: green
+      primary: blue
       accent: deep purple
     # Light Mode
     - scheme: default
       toggle:
         icon: material/weather-night
         name: Light mode
-      primary: blue
+      primary: black
       accent: deep orange
 
 markdown_extensions:
@@ -90,6 +91,13 @@ plugins:
   - awesome-pages
   - blog
   - charts
+  - plantuml:
+      puml_url: https://www.plantuml.com/plantuml/
+  - git-authors:
+      show_contribution: true
+  - git-revision-date-localized:
+      type: datetime
+      fallback_to_build_date: true
 
 copyright: Copyright &copy; 2020-2025 by Simtestlab Sweden AB
 
@@ -101,3 +109,6 @@ extra:
     review: In review
     approved: Approved
     deprecated: Deprecated
+
+extra_css:
+  - styles/extra.css
