@@ -1,3 +1,4 @@
 [submodule "simtestlab/bms_master"]
 	path = simtestlab/bms_software
 	url = https://github.com/Simtestlab/bms_master.git
+	branch = main
