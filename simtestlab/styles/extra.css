@@ -2,7 +2,7 @@
 /* Make navigation text stronger */
 .md-nav__item--active > .md-nav__link {
 	font-weight: 900;
-	color: #1a237e;
+	color: #a0e2c5;
 	background: linear-gradient(90deg, #e3e6f5 0%, #f5f7fa 100%);
 	border-radius: 4px;
 	box-shadow: 0 2px 6px rgba(0,0,0,0.07);
@@ -18,34 +18,98 @@
 }
 .md-content h1 {
   font-weight: bold;
-  font-size: 2rem;
-  background-color: #bedaf0;
+  font-size: 1rem;
+  background-color: #d1e3f1;
   padding: 0.3em 0.6em;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
-.md-status::before {
-  content: "";
-  display: inline-block;
-  width: 0.75em;
-  height: 0.75em;
-  border-radius: 50%;
-  margin-right: 0.5em;
-  vertical-align: middle;
+.md-nav__link .md-status,
+.md-nav__link .md-status::before,
+.md-nav__link .md-status::after,
+.md-status,
+.md-status::before,
+.md-status::after,
+.md-nav__link::before,
+.md-nav__link::after {
+  /* remove any generated content or images */
+  content: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  box-shadow: none !important;
+
+  /* reset sizing so we can re-add our dot cleanly */
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-block !important;
 }
 
-/* Specific colors based on status */
-.md-status[data-md-status="approved"]::before {
-  background-color: #4CAF50; /* green */
+/* Ensure the span itself doesn't collapse or hide our custom marker */
+.md-nav__link .md-status,
+.md-status {
+  vertical-align: middle !important;
 }
 
-.md-status[data-md-status="review"]::before {
-  background-color: #F44336; /* red */
+/* ===========
+   Add our custom dot using ::after (high specificity)
+   =========== */
+
+/* DRAFT */
+.md-nav__link .md-status.md-status--draft::after,
+.md-status.md-status--draft::after {
+  content: "" !important;
+  display: inline-block !important;
+  width: 0.6em !important;
+  height: 0.6em !important;
+  border-radius: 50% !important;
+  background: #ff9800 !important;
+  margin-right: 0.4em !important;
+  vertical-align: middle !important;
 }
 
-.md-status[data-md-status="draft"]::before {
-  background-color: #2196F3; /* blue */
+/* REVIEW */
+.md-nav__link .md-status.md-status--review::after,
+.md-status.md-status--review::after {
+  content: "" !important;
+  display: inline-block !important;
+  width: 0.6em !important;
+  height: 0.6em !important;
+  border-radius: 50% !important;
+  background: #2196f3 !important;
+  margin-right: 0.4em !important;
+  vertical-align: middle !important;
 }
+
+/* APPROVED */
+.md-nav__link .md-status.md-status--approved::after,
+.md-status.md-status--approved::after {
+  content: "" !important;
+  display: inline-block !important;
+  width: 0.6em !important;
+  height: 0.6em !important;
+  border-radius: 50% !important;
+  background: #2e7d32 !important;
+  margin-right: 0.4em !important;
+  vertical-align: middle !important;
+}
+
+/* DEPRECATED */
+.md-nav__link .md-status.md-status--deprecated::after,
+.md-status.md-status--deprecated::after {
+  content: "" !important;
+  display: inline-block !important;
+  width: 0.6em !important;
+  height: 0.6em !important;
+  border-radius: 50% !important;
+  background: #f44336 !important;
+  margin-right: 0.4em !important;
+  vertical-align: middle !important;
+}
+
 
 
 .mermaid {
