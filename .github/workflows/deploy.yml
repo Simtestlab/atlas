@@ -2,7 +2,7 @@ name: Deploy MkDocs to AWS EC2
 
 on:
   push:
-    branches: [ main, master, mkdocs-enabled-submodules-added ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
