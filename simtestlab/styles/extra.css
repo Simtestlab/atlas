@@ -121,3 +121,9 @@
 .mermaid-wrapper {
     overflow-x: auto;
 }
+
+.mermaid-code-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}

@@ -4,8 +4,7 @@ site_description: Complete documentation for simtestlab
 docs_dir: simtestlab
 nav:
   - Home: index.md
-  - Blog:
-      - blog/index.md
+  - Help: help.md
   - Project Manager: 
       - ... | ProjectManagement/**
   - BMS Application:
@@ -20,20 +19,26 @@ theme:
   favicon: assets/favicon.ico
   features:
     - navigation.footer
+    - navigation.tabs
+    - navigation.top
+    - content.tabs.link
+    - content.code.copy
+    - content.tooltips
+    - content.grid 
   palette:
     # Dark Mode
     - scheme: slate
       toggle:
         icon: material/weather-sunny
         name: Dark mode
-      primary: blue
+      primary: grey
       accent: deep purple
     # Light Mode
     - scheme: default
       toggle:
         icon: material/weather-night
         name: Light mode
-      primary: black
+      primary: grey
       accent: deep orange
 
 markdown_extensions:
@@ -108,6 +113,11 @@ extra:
     review: In review
     approved: Approved
     deprecated: Deprecated
+  icons:
+    header:
+      - icon: material/help-circle
+        link: help/
+        name: Help
 
 extra_css:
   - styles/extra.css
