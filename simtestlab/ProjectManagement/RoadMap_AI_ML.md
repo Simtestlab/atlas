@@ -1,3 +1,6 @@
+
+
+<div class="plantuml-wrapper">
 ```puml
 @startgantt
 <style>
@@ -41,3 +44,4 @@ today is colored in red
 
 
 ```
+</div>
