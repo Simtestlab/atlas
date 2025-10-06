@@ -9,6 +9,8 @@ nav:
       - ... | ProjectManagement/**
   - BMS Application:
       - ... | bms_software/Specifications/**
+  - System Engineering: 
+      - ... | System Engineering/**
 theme:
   name: material
   custom_dir: simtestlab/custom_theme
@@ -107,7 +109,7 @@ copyright: Copyright &copy; 2020-2025 by Simtestlab Sweden AB
 
 extra:
   generator: false
-  comments: true
+  comments: false
   status:
     draft: In draft
     review: In review
