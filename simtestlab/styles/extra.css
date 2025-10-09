@@ -122,6 +122,51 @@
     overflow-x: auto;
 }
 
+.plantuml-wrapper {
+    overflow: auto;
+    width: 100%;
+    height: 320px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    margin-bottom: 4rem;
+    display: block;
+}
+
+.plantuml-wrapper img,
+.plantuml-wrapper svg {
+    max-width: none;
+    height: auto;
+    display: block;
+}
+
+/* Ensure PlantUML content doesn't get cut off */
+.plantuml-wrapper > div {
+    width: max-content;
+    min-width: 100%;
+}
+
+/* Ensure footer metadata appears below the diagram */
+.md-content .md-typeset .plantuml-wrapper + * {
+    margin-top: 3rem !important;
+    clear: both;
+}
+
+/* Fix PlantUML footer positioning */
+.plantuml-wrapper::after {
+    content: "";
+    display: block;
+    height: 80px;
+    clear: both;
+}
+
+/* Force separation for PlantUML diagrams */
+.plantuml-wrapper {
+    isolation: isolate;
+}
+
+
+
 .mermaid-code-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
