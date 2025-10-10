@@ -172,3 +172,29 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
+
+/* Time clocks responsive design */
+#time-clocks {
+    position: fixed;
+    right: 10px;
+    top: 150px;
+    background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Mobile styles for time clocks */
+@media (max-width: 768px) {
+    #time-clocks {
+        display: none;
+    }
+}
