@@ -6,3 +6,5 @@ mkdocs-awesome-pages-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-git-authors-plugin
 mkdocs-puml
+requests>=2.31.0
+PyYAML>=6.0.1
