@@ -1,7 +1,7 @@
 # Our Organization
 
 ## Team Structure
-```plantuml
+```puml
 @startwbs
 <style>
 wbsDiagram {
