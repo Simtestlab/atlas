@@ -4,6 +4,52 @@ title: Limits Violation Protection
 status: draft
 ---
 
+
+
+```puml
+@startuml
+
+' External signal sources (left)
+participant "Source" as Inputs
+
+' SWC in the middle   
+box "Cell Balancing SWC" #LightGreen
+  participant "SWC Input" as In
+  participant "SWC Output " as Out
+
+end box
+
+' Signals into SWC ############################# EDIT ONLY HERE #############################
+Inputs -> In : Cell voltage (fast filtered)
+Inputs -> In : Cell temperature (fast filtered)
+Inputs -> In : I_lim_chg
+Inputs -> In : I_lim_dch
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+Out -> Output : Contactor Immediate Opening Request
+Out -> Output : Critical error flag
+Out -> Output : Mild error flag
+
+
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+note right of In 
+    <b> Calibration Parameters:</b>
+      voltage critical MIN :- 2.3 V 
+      voltage critical MAX :- 3.8 V
+      temperature critical MIN :- 0 °C
+      temperature critical MAX :- 45 °C
+      I_crit :- 150 A
+      current limit charge :- TBD A
+      current limit discharge :- TBD A
+      Dt_OI_crit :- 10 s
+      Dt_OIL_crit:- 10 s
+end note
+@enduml
+
+```
+
+
 # Limits Violation Protection
 
 The BMS shall detect any violation on any cell of the pack and react as fast as possible to protect the batteries.  
@@ -11,30 +57,9 @@ It shall continuously monitor cell voltages and temperatures and act by either o
 
 ---
 
-## Inputs
-- Cell voltage (fast filtered)
-- Cell temperature (fast filtered)
-- I_lim_chg
-- I_lim_dch
 
-## Outputs
-- Contactor Immediate Opening Request
-- Critical error flag
-- Mild error flag
 
-## Parameters
 
-| Parameter       | Range          |
-|-----------------|----------------|
-| \(V_{\text{crit,min}}\)      | 2.3 V          |
-| \(V_{\text{crit,max}}\)      | 3.8 V          |
-| \(T_{\text{crit,min}}\)      | 0 °C           |
-| \(T_{\text{crit,max}}\)      | 45 °C          |
-| I_crit                       | 150 A          |
-| Dt_OI_crit                   | 10 s           |
-| Dt_OIL_crit                  | 10 s           |
-
-![BMS Diagram](bms-limits.svg)
 
 ---
 

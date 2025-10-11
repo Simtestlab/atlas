@@ -4,19 +4,39 @@ title: Cell Balancing
 status: draft
 ---
 
+
+```puml
+@startuml
+
+' External signal sources (left)
+participant "Source" as Inputs
+
+' SWC in the middle   
+box "Cell Balancing SWC" #LightGreen
+  participant "SWC Input" as In
+  participant "SWC Output " as Out
+
+end box
+
+' Signals into SWC ############################# EDIT ONLY HERE #############################
+Inputs -> In : Cell Volatages Slow filtered
+Inputs -> In : Cell_Capacity
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+Out -> Output : bal_req
+Out -> Output : bal_remaining_time
+
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+note right of In 
+    <b> Calibration Parameters:</b>
+    - cell_imbalance_thr
+    - R_bleed
+end note
+@enduml
+
+```
 # Cell Balancing
-
-## Input:
-Cell voltage slow filtered
-Cell_capacity
-
-## Output:
-bal_req
-bal_remaining_time
-
-## Parameters:
-cell_imbalance_thr
-R_bleed
 
 The purpose of cell balancing is to balance the energy between the different cells within a pack. In this document, we will only consider passive cell balancing, where a resistor called a bleeding resistor "wastes" energy
 from one or multiple cell to align the energy content between all the cells in a pack.

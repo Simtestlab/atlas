@@ -6,6 +6,44 @@ status: draft
 
 # Contactor Control Specification
 
+```puml
+@startuml
+
+' External signal sources (left)
+participant "Source" as Inputs
+
+' SWC in the middle   
+box "Conatctor Control SWC" #LightGreen
+  participant "SWC Input" as In
+  participant "SWC Output " as Out
+
+end box
+
+' Signals into SWC ############################# EDIT ONLY HERE #############################
+Inputs -> In : Link Voltage
+Inputs -> In : Pack Voltage
+Inputs -> In : RequestEnable
+Inputs -> In : Current
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+Out -> Output : pos_contactor_cmd
+Out -> Output : neg_contactor_cmd
+Out -> Output : prechg_contactor_cmd
+Out -> Output : contactor_state
+Out -> Output : contactor_error
+
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+note right of In 
+    <b> Calibration Parameters:</b>
+    - Dt_prechgTimeOut (20 s default)
+    - RminCurrentOpenThr (5 A default)
+    - Dt_loCurrentTimeout (30 s default)
+    - Delay_mildError (10 s default)
+end note
+@enduml
+
+```
 ---
 
 ## 1. With Precharge Circuit
@@ -127,11 +165,71 @@ On disconnection request:
 - Send **disconnection request** over CAN.  
 - ✅ Observe: after **Dt_loCurrentTimeout (20 s)** → all contactors open, BMS throws disconnection timeout.  
 
-```mermaid
-flowchart TD
-    A[Start] --> B{Check Faults?}
-    B -- No --> C[Close Negative Contactor]
-    C --> D[Close Precharge Contactor]
-    D --> E{Link ≈ Pack Voltage?}
-    E -- Yes --> F[Close Positive Contactor]
-    E -- Timeout --> G[Throw Error + Open All]
+
+```puml
+@startuml ContactorControl_State
+title Contactor Control Statechart
+
+[*] --> IDLE
+
+state IDLE {
+  IDLE --> PRECHARGE_INIT : close_request and hasPrecharge
+  IDLE --> CLOSING_NO_PRECHG : close_request and !hasPrecharge
+  IDLE --> OPENING : open_request
+}
+
+state PRECHARGE_INIT {
+
+  PRECHARGE_INIT --> PRECHARGING : after 1 tick
+}
+
+state PRECHARGING {
+
+  PRECHARGING --> CLOSING : (|Vlink - Vpack| < 5V)
+  PRECHARGING --> FAULT_TIMEOUT : (timerExpired)
+}
+
+state CLOSING {
+
+  CLOSING --> CLOSED : contact_feedback_ok
+  CLOSING --> FAULT : fault_detected
+}
+
+state CLOSING_NO_PRECHG {
+
+  CLOSING_NO_PRECHG --> CLOSED : contact_feedback_ok
+}
+
+state CLOSED {
+  CLOSED --> OPENING : open_request or fault_detected
+}
+
+state OPENING {
+
+  OPENING --> OPEN : (I < 5A)
+  OPENING --> FORCED_OPEN : (timeout 30s)
+}
+
+state FAULT_TIMEOUT {
+
+  FAULT_TIMEOUT --> IDLE : reset
+}
+
+state FORCED_OPEN {
+
+  FORCED_OPEN --> IDLE : reset
+}
+
+state FAULT {
+
+  FAULT --> IDLE : reset
+}
+
+state OPEN {
+
+  OPEN --> IDLE : close_request
+}
+
+@enduml
+```
+
