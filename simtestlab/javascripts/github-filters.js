@@ -64,6 +64,9 @@ function createFilterHTML() {
                 <select class="label-filter" data-filter="label">
                     <option value="">All labels</option>
                 </select>
+                <select class="repository-filter" data-filter="repository">
+                    <option value="">All repositories</option>
+                </select>
             </div>
             
             <div class="filter-group">
@@ -121,13 +124,15 @@ function setupFilterEventListeners(filterContainer, table) {
 function populateDropdownOptions(filterContainer, table) {
     const rows = Array.from(table.querySelectorAll('tbody tr'));
     
-    // Collect unique assignees and labels
+    // Collect unique assignees, labels, and repositories
     const assignees = new Set();
     const labels = new Set();
+    const repositories = new Set();
     
     rows.forEach(row => {
-        const assigneeCell = row.cells[3]?.textContent.trim();
-        const labelCell = row.cells[4]?.textContent.trim();
+        const assigneeCell = row.cells[4]?.textContent.trim();
+        const labelCell = row.cells[5]?.textContent.trim();
+        const repositoryCell = row.cells[1]?.textContent.trim();
         
         if (assigneeCell && assigneeCell !== '-') {
             assigneeCell.split(',').forEach(assignee => {
@@ -139,6 +144,10 @@ function populateDropdownOptions(filterContainer, table) {
             labelCell.split(',').forEach(label => {
                 labels.add(label.trim().replace(/\+\d+$/, ''));
             });
+        }
+        
+        if (repositoryCell) {
+            repositories.add(repositoryCell);
         }
     });
     
@@ -159,6 +168,15 @@ function populateDropdownOptions(filterContainer, table) {
         option.textContent = label;
         labelSelect.appendChild(option);
     });
+    
+    // Populate repository dropdown
+    const repositorySelect = filterContainer.querySelector('.repository-filter');
+    repositories.forEach(repository => {
+        const option = document.createElement('option');
+        option.value = repository;
+        option.textContent = repository;
+        repositorySelect.appendChild(option);
+    });
 }
 
 function applyFilters(filterContainer, table) {
@@ -169,6 +187,7 @@ function applyFilters(filterContainer, table) {
     const searchTerm = filterContainer.querySelector('.search-input').value.toLowerCase();
     const assigneeFilter = filterContainer.querySelector('.assignee-filter').value;
     const labelFilter = filterContainer.querySelector('.label-filter').value;
+    const repositoryFilter = filterContainer.querySelector('.repository-filter').value;
     const sortBy = filterContainer.querySelector('.sort-select').value;
     
     // Filter rows
@@ -189,14 +208,20 @@ function applyFilters(filterContainer, table) {
         
         // Assignee filter
         if (assigneeFilter) {
-            const assigneeText = row.cells[3]?.textContent || '';
+            const assigneeText = row.cells[4]?.textContent || '';
             if (!assigneeText.includes(assigneeFilter)) return false;
         }
         
         // Label filter
         if (labelFilter) {
-            const labelText = row.cells[4]?.textContent || '';
+            const labelText = row.cells[5]?.textContent || '';
             if (!labelText.includes(labelFilter)) return false;
+        }
+        
+        // Repository filter
+        if (repositoryFilter) {
+            const repositoryText = row.cells[1]?.textContent || '';
+            if (repositoryText !== repositoryFilter) return false;
         }
         
         return true;
