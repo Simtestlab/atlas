@@ -1,5 +1,13 @@
 # Our Organization
 
+
+
+# Test UML
+```puml
+@startuml
+actor User
+@enduml
+```
 ## Team Structure
 ```puml
 @startwbs
@@ -78,3 +86,4 @@ wbsDiagram {
 *** Finance / HR / Purchasing <<Dept>>
 **** Muralidharan pandiyan <<Resource>>
 @endwbs
+```
