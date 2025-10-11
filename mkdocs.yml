@@ -8,7 +8,7 @@ nav:
   - Project Manager: 
       - ... | ProjectManagement/**
   - BMS Application:
-      - ... | bms_software/Specifications/**
+      - ... | SoftwareSpecifiactions/ApplicationSoftware/**
   - System Engineering: 
       - ... | System Engineering/**
 theme:
