@@ -10,7 +10,6 @@ nav:
       - Repositories:
           - adbms: github_issues/repositories/adbms/index.md
           - atlas: github_issues/repositories/atlas/index.md
-          - attendance_app: github_issues/repositories/attendance_app/index.md
           - bms_app: github_issues/repositories/bms_app/index.md
           - expense_tracker: github_issues/repositories/expense_tracker/index.md
   - Project Manager: 

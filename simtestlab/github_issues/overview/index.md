@@ -1,6 +1,6 @@
 # GitHub Issues Dashboard
 
-**5** repositories • **61** issues • **44** open • **17** closed
+**4** repositories • **60** issues • **43** open • **17** closed
 
 <div class="github-issue-table-container">
 <table class="github-issue-table">
@@ -28,7 +28,6 @@
 <tr><td>🟢 Open</td><td><a href='../repositories/bms_app/'>bms_app</a></td><td><a href='https://github.com/Simtestlab/bms_app/issues/54' target='_blank'>#54</a></td><td>testing Contactor control model</td><td>Muralipandiyan</td><td>-</td><td>2025-02-15</td></tr>
 <tr><td>🟢 Open</td><td><a href='../repositories/bms_app/'>bms_app</a></td><td><a href='https://github.com/Simtestlab/bms_app/issues/28' target='_blank'>#28</a></td><td>BmsSocInitialization</td><td>crmaarimuthu</td><td>-</td><td>2025-02-13</td></tr>
 <tr><td>🟢 Open</td><td><a href='../repositories/bms_app/'>bms_app</a></td><td><a href='https://github.com/Simtestlab/bms_app/issues/27' target='_blank'>#27</a></td><td>BmsCoulombCounting</td><td>crmaarimuthu</td><td>-</td><td>2025-02-13</td></tr>
-<tr><td>🟢 Open</td><td><a href='../repositories/attendance_app/'>attendance_app</a></td><td><a href='https://github.com/Simtestlab/attendance_app/issues/1' target='_blank'>#1</a></td><td>Setup an app environment using React Native (te...</td><td>harish-ramar</td><td>-</td><td>2025-02-13</td></tr>
 <tr><td>🟢 Open</td><td><a href='../repositories/bms_app/'>bms_app</a></td><td><a href='https://github.com/Simtestlab/bms_app/issues/56' target='_blank'>#56</a></td><td>BmsCellModel Testing</td><td>RajavelRajendiran</td><td>-</td><td>2025-02-06</td></tr>
 <tr><td>🟢 Open</td><td><a href='../repositories/bms_app/'>bms_app</a></td><td><a href='https://github.com/Simtestlab/bms_app/issues/52' target='_blank'>#52</a></td><td>Model Integration</td><td>akil7700</td><td>-</td><td>2025-02-05</td></tr>
 <tr><td>🟢 Open</td><td><a href='../repositories/bms_app/'>bms_app</a></td><td><a href='https://github.com/Simtestlab/bms_app/issues/5' target='_blank'>#5</a></td><td>bmssoc-Coulomb Counting</td><td>RajavelRajendiran</td><td>-</td><td>2025-01-29</td></tr>
@@ -83,4 +82,4 @@
 
 ---
 
-Last updated: 2025-10-12 07:46 UTC
+Last updated: 2025-10-12 07:52 UTC
