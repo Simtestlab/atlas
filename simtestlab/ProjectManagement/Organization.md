@@ -78,4 +78,4 @@ wbsDiagram {
 *** Finance / HR / Purchasing <<Dept>>
 **** Muralidharan pandiyan <<Resource>>
 @endwbs
-@enduml
+```
