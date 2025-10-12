@@ -22,8 +22,8 @@ function addFiltersToTable(table) {
     filterContainer.className = 'issue-filters';
     filterContainer.innerHTML = createFilterHTML(table);
     
-    // Insert filters before the table
-    container.insertBefore(filterContainer, table);
+    // Insert filters before the table container (outside the table UI)
+    container.parentElement.insertBefore(filterContainer, container);
     
     // Add event listeners
     setupFilterEventListeners(filterContainer, table);
@@ -236,8 +236,8 @@ function updateFilterCounts(table, filteredRows = null) {
         row.cells[0]?.textContent.toLowerCase().includes('closed')
     ).length;
     
-    // Update counts in filter buttons
-    const filterContainer = table.previousElementSibling;
+    // Update counts in filter buttons (filters are now outside the container)
+    const filterContainer = table.parentElement.previousElementSibling;
     if (filterContainer && filterContainer.classList.contains('issue-filters')) {
         const allCountSpan = filterContainer.querySelector('[data-count="all"]');
         const openCountSpan = filterContainer.querySelector('[data-count="open"]');
