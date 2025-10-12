@@ -2,6 +2,7 @@
 
 **3** issues • **2** open • **1** closed
 
+<div class="github-issue-table-container">
 <table class="github-issue-table">
 <thead>
 <tr>
@@ -19,7 +20,8 @@
 <tr><td>🔴 Closed</td><td><a href='./issue-8-fix-submodule-to-point-to-main.md'>#8</a></td><td>fix submodule to point to main</td><td>aeroramesh</td><td>-</td><td>2025-10-05</td></tr>
 </tbody>
 </table>
+</div>
 
 ---
 
-Last updated: 2025-10-10 16:31 UTC
+Last updated: 2025-10-12 06:47 UTC

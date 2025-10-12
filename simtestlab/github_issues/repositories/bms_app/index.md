@@ -2,6 +2,7 @@
 
 **37** issues • **27** open • **10** closed
 
+<div class="github-issue-table-container">
 <table class="github-issue-table">
 <thead>
 <tr>
@@ -53,7 +54,8 @@
 <tr><td>🔴 Closed</td><td><a href='./issue-3-matlab_code_stm32_pipeline.md'>#3</a></td><td>matlab_code_stm32_pipeline</td><td>RajavelRajendiran</td><td>-</td><td>2024-11-29</td></tr>
 </tbody>
 </table>
+</div>
 
 ---
 
-Last updated: 2025-10-10 16:32 UTC
+Last updated: 2025-10-12 06:47 UTC

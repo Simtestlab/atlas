@@ -20,7 +20,7 @@ function addFiltersToTable(table) {
     // Create filter controls container
     const filterContainer = document.createElement('div');
     filterContainer.className = 'issue-filters';
-    filterContainer.innerHTML = createFilterHTML();
+    filterContainer.innerHTML = createFilterHTML(table);
     
     // Insert filters before the table
     container.insertBefore(filterContainer, table);
@@ -32,7 +32,9 @@ function addFiltersToTable(table) {
     updateFilterCounts(table);
 }
 
-function createFilterHTML() {
+function createFilterHTML(table) {
+    // Check if this is an overview table (has Repository column) or repository table
+    const isOverviewTable = table && table.rows.length > 0 && table.rows[0].cells.length > 6;
     return `
         <div class="filter-controls">
             <div class="filter-group">
@@ -61,18 +63,10 @@ function createFilterHTML() {
                 <select class="assignee-filter" data-filter="assignee">
                     <option value="">All assignees</option>
                 </select>
-                <select class="label-filter" data-filter="label">
-                    <option value="">All labels</option>
-                </select>
-                <select class="repository-filter" data-filter="repository">
-                    <option value="">All repositories</option>
-                </select>
             </div>
             
             <div class="filter-group">
                 <select class="sort-select">
-                    <option value="updated-desc">Recently updated</option>
-                    <option value="updated-asc">Least recently updated</option>
                     <option value="created-desc">Newest</option>
                     <option value="created-asc">Oldest</option>
                     <option value="title-asc">Title A-Z</option>
@@ -124,30 +118,20 @@ function setupFilterEventListeners(filterContainer, table) {
 function populateDropdownOptions(filterContainer, table) {
     const rows = Array.from(table.querySelectorAll('tbody tr'));
     
-    // Collect unique assignees, labels, and repositories
+    // Check if this is an overview table (has Repository column) or repository table
+    const isOverviewTable = rows.length > 0 && rows[0].cells.length > 6;
+    const assigneeColumnIndex = isOverviewTable ? 4 : 3;
+    
+    // Collect unique assignees
     const assignees = new Set();
-    const labels = new Set();
-    const repositories = new Set();
     
     rows.forEach(row => {
-        const assigneeCell = row.cells[4]?.textContent.trim();
-        const labelCell = row.cells[5]?.textContent.trim();
-        const repositoryCell = row.cells[1]?.textContent.trim();
+        const assigneeCell = row.cells[assigneeColumnIndex]?.textContent.trim();
         
         if (assigneeCell && assigneeCell !== '-') {
             assigneeCell.split(',').forEach(assignee => {
                 assignees.add(assignee.trim().replace(/\+\d+$/, ''));
             });
-        }
-        
-        if (labelCell && labelCell !== '-') {
-            labelCell.split(',').forEach(label => {
-                labels.add(label.trim().replace(/\+\d+$/, ''));
-            });
-        }
-        
-        if (repositoryCell) {
-            repositories.add(repositoryCell);
         }
     });
     
@@ -159,35 +143,19 @@ function populateDropdownOptions(filterContainer, table) {
         option.textContent = assignee;
         assigneeSelect.appendChild(option);
     });
-    
-    // Populate label dropdown
-    const labelSelect = filterContainer.querySelector('.label-filter');
-    labels.forEach(label => {
-        const option = document.createElement('option');
-        option.value = label;
-        option.textContent = label;
-        labelSelect.appendChild(option);
-    });
-    
-    // Populate repository dropdown
-    const repositorySelect = filterContainer.querySelector('.repository-filter');
-    repositories.forEach(repository => {
-        const option = document.createElement('option');
-        option.value = repository;
-        option.textContent = repository;
-        repositorySelect.appendChild(option);
-    });
 }
 
 function applyFilters(filterContainer, table) {
     const rows = Array.from(table.querySelectorAll('tbody tr'));
     
+    // Check if this is an overview table (has Repository column) or repository table
+    const isOverviewTable = rows.length > 0 && rows[0].cells.length > 6;
+    const assigneeColumnIndex = isOverviewTable ? 4 : 3;
+    
     // Get filter values
     const activeStatusFilter = filterContainer.querySelector('.filter-btn.active')?.dataset.filter;
     const searchTerm = filterContainer.querySelector('.search-input').value.toLowerCase();
     const assigneeFilter = filterContainer.querySelector('.assignee-filter').value;
-    const labelFilter = filterContainer.querySelector('.label-filter').value;
-    const repositoryFilter = filterContainer.querySelector('.repository-filter').value;
     const sortBy = filterContainer.querySelector('.sort-select').value;
     
     // Filter rows
@@ -208,20 +176,8 @@ function applyFilters(filterContainer, table) {
         
         // Assignee filter
         if (assigneeFilter) {
-            const assigneeText = row.cells[4]?.textContent || '';
+            const assigneeText = row.cells[assigneeColumnIndex]?.textContent || '';
             if (!assigneeText.includes(assigneeFilter)) return false;
-        }
-        
-        // Label filter
-        if (labelFilter) {
-            const labelText = row.cells[5]?.textContent || '';
-            if (!labelText.includes(labelFilter)) return false;
-        }
-        
-        // Repository filter
-        if (repositoryFilter) {
-            const repositoryText = row.cells[1]?.textContent || '';
-            if (repositoryText !== repositoryFilter) return false;
         }
         
         return true;
@@ -247,16 +203,21 @@ function applyFilters(filterContainer, table) {
 }
 
 function sortRows(rows, sortBy) {
+    // Check if this is an overview table (has Repository column) or repository table
+    const isOverviewTable = rows.length > 0 && rows[0].cells.length > 6;
+    const titleColumnIndex = isOverviewTable ? 3 : 2;
+    const dateColumnIndex = isOverviewTable ? 6 : 5;
+    
     return rows.sort((a, b) => {
         switch (sortBy) {
-            case 'updated-desc':
-                return new Date(b.cells[5]?.textContent) - new Date(a.cells[5]?.textContent);
-            case 'updated-asc':
-                return new Date(a.cells[5]?.textContent) - new Date(b.cells[5]?.textContent);
+            case 'created-desc':
+                return new Date(b.cells[dateColumnIndex]?.textContent) - new Date(a.cells[dateColumnIndex]?.textContent);
+            case 'created-asc':
+                return new Date(a.cells[dateColumnIndex]?.textContent) - new Date(b.cells[dateColumnIndex]?.textContent);
             case 'title-asc':
-                return (a.cells[2]?.textContent || '').localeCompare(b.cells[2]?.textContent || '');
+                return (a.cells[titleColumnIndex]?.textContent || '').localeCompare(b.cells[titleColumnIndex]?.textContent || '');
             case 'title-desc':
-                return (b.cells[2]?.textContent || '').localeCompare(a.cells[2]?.textContent || '');
+                return (b.cells[titleColumnIndex]?.textContent || '').localeCompare(a.cells[titleColumnIndex]?.textContent || '');
             default:
                 return 0;
         }

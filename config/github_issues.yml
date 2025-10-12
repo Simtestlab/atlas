@@ -43,6 +43,19 @@ repositories:
   
   # Include archived repositories (set to false for testing)
   include_archived: true
+  
+  # Excel configuration for repository list
+  excel:
+    # Path to Excel/CSV file containing repository names
+    # Leave empty to fetch from all repositories in the organization
+    # Set to "config/repositories.csv" to use the CSV file with selected repositories
+    file_path: "config/repositories.csv"
+    
+    # Sheet name containing the repository list (ignored for CSV)
+    sheet_name: "Sheet1"
+    
+    # Column name containing repository names
+    repo_column: "Repository"
 
 # Issue Filtering - LIMITED FOR TESTING
 issues:

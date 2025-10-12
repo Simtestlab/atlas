@@ -2,6 +2,7 @@
 
 **19** issues • **13** open • **6** closed
 
+<div class="github-issue-table-container">
 <table class="github-issue-table">
 <thead>
 <tr>
@@ -35,7 +36,8 @@
 <tr><td>🟢 Open</td><td><a href='./issue-6-BSW-Remove-BACON--from-the-frame.md'>#6</a></td><td>[BSW] Remove BACON  from the frame </td><td>aeroramesh</td><td>-</td><td>2024-07-07</td></tr>
 </tbody>
 </table>
+</div>
 
 ---
 
-Last updated: 2025-10-10 16:32 UTC
+Last updated: 2025-10-12 06:47 UTC

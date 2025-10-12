@@ -2,6 +2,7 @@
 
 **1** issues • **1** open • **0** closed
 
+<div class="github-issue-table-container">
 <table class="github-issue-table">
 <thead>
 <tr>
@@ -17,7 +18,8 @@
 <tr><td>🟢 Open</td><td><a href='./issue-1-expense-tracker-app-replication.md'>#1</a></td><td>expense tracker app replication</td><td>divya-rosy</td><td>-</td><td>2025-05-22</td></tr>
 </tbody>
 </table>
+</div>
 
 ---
 
-Last updated: 2025-10-10 16:32 UTC
+Last updated: 2025-10-12 06:47 UTC
