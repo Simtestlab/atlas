@@ -515,10 +515,10 @@ class GitHubIssuesFetcher:
                 # Format updated date
                 updated_date = issue.get('updated_at', issue['created_at'])[:10]
                 
-                # Create filename for local link
-                filename = self._format_filename(issue, repo_name)
+                # Create GitHub issue link
+                github_url = issue.get('html_url', f"https://github.com/{self.config['github']['organization']}/{repo_name}/issues/{issue['number']}")
                 
-                lines.append(f"<tr><td>{status}</td><td><a href='./{filename}'>#{issue['number']}</a></td><td>{title}</td><td>{assignee_str}</td><td>{label_str}</td><td>{updated_date}</td></tr>")
+                lines.append(f"<tr><td>{status}</td><td><a href='{github_url}' target='_blank'>#{issue['number']}</a></td><td>{title}</td><td>{assignee_str}</td><td>{label_str}</td><td>{updated_date}</td></tr>")
             
             lines.extend([
                 '</tbody>',
@@ -643,7 +643,10 @@ class GitHubIssuesFetcher:
             # Format updated date
             updated_date = issue['updated_at'][:10]  # YYYY-MM-DD format
             
-            lines.append(f"<tr><td>{status}</td><td>{issue['repository']}</td><td><a href='{issue['html_url']}' target='_blank'>#{issue['number']}</a></td><td>{title}</td><td>{assignee_str}</td><td>{label_str}</td><td>{updated_date}</td></tr>")
+            # Create repository link to local repository page
+            repo_link = f"<a href='../repositories/{issue['repository']}/'>{issue['repository']}</a>"
+            
+            lines.append(f"<tr><td>{status}</td><td>{repo_link}</td><td><a href='{issue['html_url']}' target='_blank'>#{issue['number']}</a></td><td>{title}</td><td>{assignee_str}</td><td>{label_str}</td><td>{updated_date}</td></tr>")
         
         lines.extend([
             '</tbody>',

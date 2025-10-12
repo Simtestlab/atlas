@@ -15,11 +15,11 @@
 </tr>
 </thead>
 <tbody>
-<tr><td>🟢 Open</td><td><a href='./issue-1-Setup-an-app-environment-using-React-Native-testin.md'>#1</a></td><td>Setup an app environment using React Native (te...</td><td>harish-ramar</td><td>-</td><td>2025-02-13</td></tr>
+<tr><td>🟢 Open</td><td><a href='https://github.com/Simtestlab/attendance_app/issues/1' target='_blank'>#1</a></td><td>Setup an app environment using React Native (te...</td><td>harish-ramar</td><td>-</td><td>2025-02-13</td></tr>
 </tbody>
 </table>
 </div>
 
 ---
 
-Last updated: 2025-10-12 06:47 UTC
+Last updated: 2025-10-12 07:46 UTC
