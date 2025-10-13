@@ -11,7 +11,7 @@ status: draft
 participant "Source" as Inputs
 
 ' SWC in the middle   
-box "Cell Balancing SWC" #LightGreen
+box "Current Limit SWC" #LightGreen
   participant "SWC Input" as In
   participant "SWC Output " as Out
 
@@ -32,6 +32,12 @@ note right of In
     <b> Calibration Parameters:</b>
     - I_cont_dch_lim, I_cont_chg_lim
     - I_long_dch_lim, I_long_chg_lim
+    - I_short_dch_lim, I_short_chg_lim 
+    - Dt_short_lim, Dt_long_lim
+    - Rmin, Rmax
+    - V_op_min, V_op_max
+    - T_op_min, T_op_max
+    - T_crit_min, T_crit_max
 end note
 @enduml
 
