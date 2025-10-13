@@ -1,3 +1,9 @@
+---
+comments: true
+title: Current Limits
+status: draft
+---
+
 ```puml
 @startuml
 
@@ -24,18 +30,14 @@ Out -> Output : I_lim_dch
 ' Signals from SWC ##########################  EDIT ONLY HERE ################################
 note right of In 
     <b> Calibration Parameters:</b>
-    - `I_cont_dch_lim`, `I_cont_chg_lim` | -72A, 72A | Continuous discharge/charge limits
-    - `I_long_dch_lim`, `I_long_chg_lim` | -144A, 144A | Long pulse discharge/charge limits
+    - I_cont_dch_lim, I_cont_chg_lim
+    - I_long_dch_lim, I_long_chg_lim
 end note
 @enduml
 
 ```
 
----
-comments: true
-title: Current Limits
-status: draft
----
+
 
 # Current Limits
 
