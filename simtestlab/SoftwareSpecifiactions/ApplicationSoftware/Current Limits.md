@@ -1,3 +1,36 @@
+```puml
+@startuml
+
+' External signal sources (left)
+participant "Source" as Inputs
+
+' SWC in the middle   
+box "Cell Balancing SWC" #LightGreen
+  participant "SWC Input" as In
+  participant "SWC Output " as Out
+
+end box
+
+' Signals into SWC ############################# EDIT ONLY HERE #############################
+Inputs -> In : Cell voltage fast filtered
+Inputs -> In : Temperature slow filtered
+Inputs -> In : Uocv(Soc)
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+Out -> Output : I_lim_chg
+Out -> Output : I_lim_dch
+
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+note right of In 
+    <b> Calibration Parameters:</b>
+    - `I_cont_dch_lim`, `I_cont_chg_lim` | -72A, 72A | Continuous discharge/charge limits
+    - `I_long_dch_lim`, `I_long_chg_lim` | -144A, 144A | Long pulse discharge/charge limits
+end note
+@enduml
+
+```
+
 ---
 comments: true
 title: Current Limits
@@ -5,16 +38,6 @@ status: draft
 ---
 
 # Current Limits
-
-## Inputs
-- Cell voltage fast filtered
-- Current fast filtered
-- Temperature slow filtered
-- Uocv(Soc)
-
-## Outputs
-- `I_lim_chg`
-- `I_lim_dch`
 
 ## Parameters
 | Parameter | Value | Description |
