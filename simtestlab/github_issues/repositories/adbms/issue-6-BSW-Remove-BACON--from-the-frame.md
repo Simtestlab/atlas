@@ -11,7 +11,7 @@
 
 ## Description
 
-Todo: 
-
-Remove BACON data from the data packet , 
+Todo: 
+
+Remove BACON data from the data packet , 
 which is 1 byte in the begining and last byte minus one byte 

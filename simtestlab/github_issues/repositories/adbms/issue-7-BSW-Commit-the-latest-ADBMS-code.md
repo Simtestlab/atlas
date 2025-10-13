@@ -13,6 +13,6 @@
 
 ## Description
 
-ToDo :
-
+ToDo :
+
 get all the data from ADBMS into repo

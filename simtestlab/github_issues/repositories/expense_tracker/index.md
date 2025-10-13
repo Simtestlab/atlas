@@ -15,11 +15,11 @@
 </tr>
 </thead>
 <tbody>
-<tr><td>🟢 Open</td><td><a href='https://github.com/Simtestlab/expense_tracker/issues/1' target='_blank'>#1</a></td><td>expense tracker app replication</td><td>divya-rosy</td><td>-</td><td>2025-05-22</td></tr>
+<tr><td>🟢 Open</td><td><a href='https://github.com/Simtestlab/expense_tracker/issues/1' target='_blank'>#1</a></td><td>expense tracker app replication</td><td>divya-rosy</td><td>-</td><td>2025-10-12</td></tr>
 </tbody>
 </table>
 </div>
 
 ---
 
-Last updated: 2025-10-12 07:52 UTC
+Last updated: 2025-10-13 03:42 UTC
