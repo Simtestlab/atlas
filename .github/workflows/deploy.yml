@@ -30,7 +30,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        mkdocs build --clean --verbose
+        mkdocs build --clean
 
     # Deploy site to EC2
     - name: Deploy to EC2
@@ -41,6 +41,7 @@ jobs:
         DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
       run: |
         sudo apt-get update
+        
         sudo apt-get install -y openssh-client rsync
 
         # Setup SSH key
