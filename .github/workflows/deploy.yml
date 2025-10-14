@@ -32,6 +32,14 @@ jobs:
         python-version: '3.11'
         cache: 'pip'
 
+    # Clean pip cache
+    - name: Clean pip cache
+      run: pip cache purge
+
+    # Clean site directory
+    - name: Clean site directory
+      run: rm -rf site/
+
     # Install dependencies and build MkDocs site
     - name: Build MkDocs site
       run: |
