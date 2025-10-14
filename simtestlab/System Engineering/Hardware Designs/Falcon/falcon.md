@@ -5,7 +5,7 @@
 It is designed for industrial automation and embedded applications, supporting **EtherCAT**, **Ethernet**, **CAN**, and multiple peripheral interfaces for flexible connectivity.
 
 ---
-´´´puml
+```puml
 @startuml
 title XMC4800 Microcontroller — Hardware Block Diagram
 
@@ -65,7 +65,7 @@ MCU -up-> DBG_CON : SWD / JTAG
 
 @enduml
 
-'''
+```
 
 ## Electrical Specifications
 
