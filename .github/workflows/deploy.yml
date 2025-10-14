@@ -40,6 +40,10 @@ jobs:
     - name: Clean site directory
       run: rm -rf site/
 
+    # Clean MkDocs cache
+    - name: Clean MkDocs cache
+      run: rm -rf .cache/
+
     # Install dependencies and build MkDocs site
     - name: Build MkDocs site
       run: |
