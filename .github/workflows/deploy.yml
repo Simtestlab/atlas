@@ -18,6 +18,13 @@ jobs:
         submodules: recursive
         fetch-depth: 0
 
+    # Clean workspace and submodules
+    - name: Clean workspace
+      run: |
+        git clean -fdx
+        git submodule foreach --recursive git clean -fdx
+        git submodule foreach --recursive git reset --hard
+
     # Set up Python
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -41,7 +48,7 @@ jobs:
         DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
       run: |
         sudo apt-get update
-        
+
         sudo apt-get install -y openssh-client rsync
 
         # Setup SSH key
