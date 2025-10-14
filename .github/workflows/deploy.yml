@@ -69,6 +69,9 @@ jobs:
         ssh -i ~/.ssh/id_rsa $EC2_USERNAME@$EC2_HOST \
           "sudo mkdir -p $DEPLOY_PATH && sudo chown $EC2_USERNAME:$EC2_USERNAME $DEPLOY_PATH"
 
+        # Clean deployment directory on EC2
+        ssh -i ~/.ssh/id_rsa $EC2_USERNAME@$EC2_HOST "sudo rm -rf $DEPLOY_PATH/*"
+
         # Sync site to EC2
         rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa" ./site/ $EC2_USERNAME@$EC2_HOST:$DEPLOY_PATH/
 
