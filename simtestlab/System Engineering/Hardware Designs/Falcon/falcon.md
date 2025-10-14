@@ -5,6 +5,67 @@
 It is designed for industrial automation and embedded applications, supporting **EtherCAT**, **Ethernet**, **CAN**, and multiple peripheral interfaces for flexible connectivity.
 
 ---
+´´´puml
+@startuml
+title XMC4800 Microcontroller — Hardware Block Diagram
+
+skinparam rectangle {
+  BackgroundColor #f9f9f9
+  BorderColor #333
+  RoundCorner 15
+  Shadowing true
+}
+skinparam packageStyle rectangle
+
+'==== Power Section ====
+rectangle "Power Supply" as PWR {
+  rectangle "DC Input 12V" as VIN
+  rectangle "DC/DC Converter\n(12V → 5V/3.3V)" as DCDC
+  rectangle "LDO Regulator\n(3.3V MCU Supply)" as LDO
+}
+VIN --> DCDC
+DCDC --> LDO
+
+'==== Clock and Reset ====
+rectangle "Clock & Reset" as CLK {
+  rectangle "Crystal Oscillator\n(12MHz / 25MHz)" as XTAL
+  rectangle "PLL\n(System Clock Generation)" as PLL
+  rectangle "Reset Circuit\n(Supervisor / POR)" as RST
+}
+
+'==== MCU Core ====
+rectangle "Microcontroller (XMC4800)" as MCU {
+  rectangle "CPU Core\n(ARM Cortex-M4F @ 144MHz)" as CPU
+  rectangle "Flash / SRAM" as MEM
+  rectangle "EtherCAT Slave Controller" as ECAT
+  rectangle "SPI / UART / I2C" as COMM
+  rectangle "ADC / DAC / PWM" as ANA
+  rectangle "GPIOs" as GPIO
+  rectangle "Debug Interface\n(SWD / JTAG)" as DBG
+}
+
+'==== External Interfaces ====
+rectangle "EtherCAT PHY & RJ45" as PHY
+rectangle "External SPI Device" as SPIDEV
+rectangle "Sensor Board\n(Analog / Digital I/O)" as SENS
+rectangle "Programming / Debug Connector" as DBG_CON
+rectangle "Power Stage / Actuators" as ACT
+
+'==== Connections ====
+LDO --> MCU : 3.3V Power
+XTAL --> MCU : Clock Input
+PLL --> MCU : System Clock
+RST --> MCU : Reset Line
+
+MCU -down-> PHY : EtherCAT TX/RX via RMII
+MCU -right-> SPIDEV : SPI Bus
+MCU -down-> SENS : ADC / GPIO Inputs
+MCU -down-> ACT : PWM / GPIO Outputs
+MCU -up-> DBG_CON : SWD / JTAG
+
+@enduml
+
+'''
 
 ## Electrical Specifications
 
