@@ -5,10 +5,17 @@ docs_dir: simtestlab
 nav:
   - Home: index.md
   - Help: help.md
+  - GitHub Issues:
+      - Overview: github_issues/overview/index.md
+      - Repositories:
+          - adbms: github_issues/repositories/adbms/index.md
+          - atlas: github_issues/repositories/atlas/index.md
+          - bms_app: github_issues/repositories/bms_app/index.md
+          - expense_tracker: github_issues/repositories/expense_tracker/index.md
   - Project Manager: 
       - ... | ProjectManagement/**
   - BMS Application:
-      - ... | bms_software/Specifications/**
+      - ... | SoftwareSpecifiactions/ApplicationSoftware/**
   - System Engineering: 
       - ... | System Engineering/**
 theme:
@@ -91,6 +98,7 @@ extra_javascript:
   - https://unpkg.com/mermaid@10.9.1/dist/mermaid.min.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js
+  - javascripts/github-filters.js
 
 
 
@@ -101,11 +109,12 @@ plugins:
   - charts
   - plantuml:
       puml_url: https://www.plantuml.com/plantuml/
-  - git-authors:
-      show_contribution: true
-  - git-revision-date-localized:
-      type: datetime
-      fallback_to_build_date: true
+# Temporarily disabled due to multiprocessing issues
+#  - git-authors:
+#      show_contribution: true
+#  - git-revision-date-localized:
+#      type: datetime
+#      fallback_to_build_date: true
 
 copyright: Copyright &copy; 2020-2025 by Simtestlab Sweden AB
 
