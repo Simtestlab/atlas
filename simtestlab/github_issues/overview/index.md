@@ -1,6 +1,6 @@
 # GitHub Issues Dashboard
 
-**4** repositories • **60** issues • **43** open • **17** closed
+**4** repositories • **60** issues • **42** open • **18** closed
 
 <div class="github-issue-table-container">
 <table class="github-issue-table">
@@ -16,7 +16,7 @@
 </tr>
 </thead>
 <tbody>
-<tr><td>🟢 Open</td><td><a href='../repositories/expense_tracker/'>expense_tracker</a></td><td><a href='https://github.com/Simtestlab/expense_tracker/issues/1' target='_blank'>#1</a></td><td>expense tracker app replication</td><td>divya-rosy</td><td>-</td><td>2025-10-12</td></tr>
+<tr><td>🔴 Closed</td><td><a href='../repositories/expense_tracker/'>expense_tracker</a></td><td><a href='https://github.com/Simtestlab/expense_tracker/issues/1' target='_blank'>#1</a></td><td>expense tracker app replication</td><td>divya-rosy</td><td>-</td><td>2025-10-13</td></tr>
 <tr><td>🟢 Open</td><td><a href='../repositories/atlas/'>atlas</a></td><td><a href='https://github.com/Simtestlab/atlas/issues/11' target='_blank'>#11</a></td><td>clean up atlas</td><td>nallasivamselvaraj</td><td>-</td><td>2025-10-05</td></tr>
 <tr><td>🟢 Open</td><td><a href='../repositories/atlas/'>atlas</a></td><td><a href='https://github.com/Simtestlab/atlas/issues/10' target='_blank'>#10</a></td><td>Publish GitHub Organization Issues in MkDocs</td><td>nallasivamselvaraj</td><td>-</td><td>2025-10-05</td></tr>
 <tr><td>🔴 Closed</td><td><a href='../repositories/atlas/'>atlas</a></td><td><a href='https://github.com/Simtestlab/atlas/issues/8' target='_blank'>#8</a></td><td>fix submodule to point to main</td><td>aeroramesh</td><td>-</td><td>2025-10-05</td></tr>
@@ -82,4 +82,4 @@
 
 ---
 
-Last updated: 2025-10-13 03:42 UTC
+Last updated: 2025-10-15 07:40 UTC
