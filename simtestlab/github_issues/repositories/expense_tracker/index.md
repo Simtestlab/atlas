@@ -1,6 +1,6 @@
 # expense_tracker
 
-**1** issues • **1** open • **0** closed
+**1** issues • **0** open • **1** closed
 
 <div class="github-issue-table-container">
 <table class="github-issue-table">
@@ -15,11 +15,11 @@
 </tr>
 </thead>
 <tbody>
-<tr><td>🟢 Open</td><td><a href='https://github.com/Simtestlab/expense_tracker/issues/1' target='_blank'>#1</a></td><td>expense tracker app replication</td><td>divya-rosy</td><td>-</td><td>2025-10-12</td></tr>
+<tr><td>🔴 Closed</td><td><a href='https://github.com/Simtestlab/expense_tracker/issues/1' target='_blank'>#1</a></td><td>expense tracker app replication</td><td>divya-rosy</td><td>-</td><td>2025-10-13</td></tr>
 </tbody>
 </table>
 </div>
 
 ---
 
-Last updated: 2025-10-13 03:42 UTC
+Last updated: 2025-10-15 07:40 UTC

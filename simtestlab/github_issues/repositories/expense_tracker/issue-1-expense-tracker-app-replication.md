@@ -1,9 +1,10 @@
 # Issue #1: expense tracker app replication
 
 **Repository:** expense_tracker  
-**Status:** Open  
+**Status:** Closed  
 **Created:** 2025-05-22  
-**Updated:** 2025-10-12  
+**Updated:** 2025-10-13  
+**Closed:** 2025-10-13  
 **Author:** @divya-rosy  
 **Assignees:** @divya-rosy  
 
