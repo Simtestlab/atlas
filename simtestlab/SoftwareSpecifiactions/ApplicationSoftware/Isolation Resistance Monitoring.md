@@ -8,3 +8,34 @@ If the measurement results are showing a low isolation value, the BMS shall not 
 ## Requirement
 IEC 62477-1 / IEC 60755 (PCS requirements) states that there needs to be at least 500 Ohm per volt on the high voltage side. E.g. a 300V system would need an isolation of 150 kOhm
 This only applies to high voltage systems (i.e. > 60V).
+
+@startuml
+
+' External signal sources (left)
+participant "Source" as Inputs
+
+' SWC in the middle   
+box "Isolation Resistance Monitoring SWC" #LightGreen
+  participant "SWC Input" as In
+  participant "SWC Output " as Out
+
+end box
+
+' Signals into SWC ############################# EDIT ONLY HERE #############################
+Inputs -> In : HV_BattPos_GND
+Inputs -> In : HV_BattNeg_GND
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+Out -> Output : HV_BattPos_GND_cmd
+Out -> Output : HV_BattNeg_GND_cmd
+Out -> Output : HV_BattPos_GND_Res
+Out -> Output : HV_BattNeg_GND_Res
+
+
+
+' Signals from SWC ##########################  EDIT ONLY HERE ################################
+note right of In 
+    <b> Calibration Parameters:</b>
+    - 
+end note
+@enduml
