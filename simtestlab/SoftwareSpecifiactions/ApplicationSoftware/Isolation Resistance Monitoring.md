@@ -23,14 +23,14 @@ box "Isolation Resistance Monitoring SWC" #LightGreen
 end box
 
 ' Signals into SWC ############################# EDIT ONLY HERE #############################
-Inputs -> In : HV_BattPos_GND
-Inputs -> In : HV_BattNeg_GND
+Inputs -> In : HV_BattPos_GND (BDU)
+Inputs -> In : HV_BattNeg_GND (BDU)
 
 ' Signals from SWC ##########################  EDIT ONLY HERE ################################
-Out -> Output : HV_BattPos_GND_cmd
-Out -> Output : HV_BattNeg_GND_cmd
-Out -> Output : HV_BattPos_GND_Res
-Out -> Output : HV_BattNeg_GND_Res
+Out -> Output : HV_BattPos_GND_cmd (BDU/IO)
+Out -> Output : HV_BattNeg_GND_cmd (BDU/IO)
+Out -> Output : HV_BattPos_GND_Res (CAN)
+Out -> Output : HV_BattNeg_GND_Res (CAN)
 
 
 
