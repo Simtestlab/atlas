@@ -15,8 +15,8 @@
 </tr>
 </thead>
 <tbody>
-<tr><td>🟢 Open</td><td><a href='https://github.com/Simtestlab/atlas/issues/11' target='_blank'>#11</a></td><td>clean up atlas</td><td>nallasivamselvaraj</td><td>-</td><td>2025-10-05</td></tr>
-<tr><td>🟢 Open</td><td><a href='https://github.com/Simtestlab/atlas/issues/10' target='_blank'>#10</a></td><td>Publish GitHub Organization Issues in MkDocs</td><td>nallasivamselvaraj</td><td>-</td><td>2025-10-05</td></tr>
+<tr><td>🟢 Open</td><td><a href='https://github.com/Simtestlab/atlas/issues/10' target='_blank'>#10</a></td><td>Publish GitHub Organization Issues in MkDocs</td><td>nallasivamselvaraj</td><td>-</td><td>2025-10-17</td></tr>
+<tr><td>🟢 Open</td><td><a href='https://github.com/Simtestlab/atlas/issues/11' target='_blank'>#11</a></td><td>clean up atlas</td><td>nallasivamselvaraj</td><td>-</td><td>2025-10-17</td></tr>
 <tr><td>🔴 Closed</td><td><a href='https://github.com/Simtestlab/atlas/issues/8' target='_blank'>#8</a></td><td>fix submodule to point to main</td><td>aeroramesh</td><td>-</td><td>2025-10-05</td></tr>
 </tbody>
 </table>
@@ -24,4 +24,4 @@
 
 ---
 
-Last updated: 2025-10-17 03:34 UTC
+Last updated: 2025-10-22 03:44 UTC
