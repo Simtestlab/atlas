@@ -13,7 +13,6 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -52,12 +51,17 @@ jobs:
 
       - name: Clean previous build
         run: |
-          echo " Cleaning previous build..."
+          echo "🧹 Cleaning previous site build..."
           rm -rf site
+
+      - name: Clean PlantUML cache
+        run: |
+          echo "🧹 Cleaning PlantUML cache..."
+          rm -rf .puml-cache || true
 
       - name: Build MkDocs site
         run: |
-          echo " Building MkDocs site..."
+          echo "🏗️ Building MkDocs site..."
           mkdocs build --clean
 
       - name: Inject credentials
@@ -65,7 +69,7 @@ jobs:
           DOCS_USERNAME: ${{ secrets.DOCS_USERNAME }}
           DOCS_PASSWORD: ${{ secrets.DOCS_PASSWORD }}
         run: |
-          echo " Injecting credentials..."
+          echo "🔐 Injecting credentials..."
           find site -name "*.html" -exec sed -i "s/\"testuser\"/\"${DOCS_USERNAME:-admin}\"/g" {} \;
           find site -name "*.html" -exec sed -i "s/\"testpass\"/\"${DOCS_PASSWORD:-password}\"/g" {} \;
 
