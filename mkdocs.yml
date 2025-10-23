@@ -96,7 +96,7 @@ plugins:
   - blog
   - charts
   - plantuml:
-      puml_url: https://plantuml-server.kkeisuke.dev/plantuml
+      puml_url: https://www.plantuml.com/plantuml
 # Temporarily disabled due to multiprocessing issues
 #  - git-authors:
 #      show_contribution: true
