@@ -1,3 +1,4 @@
+```puml
 @startuml
 title ESS Controller - Mode State Machine (Colored)
 
@@ -63,3 +64,4 @@ Idle --> Error : Fault re-detected
 
 [*] <-- Idle : Shutdown or Stop Command
 @enduml
+```

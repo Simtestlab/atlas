@@ -1,3 +1,4 @@
+```puml
 @startuml
 title Grid Controller - Control Cycle Sequence
 
@@ -41,3 +42,4 @@ Controller handles:
 - Coordination with ESS/PV controllers
 end note
 @enduml
+```

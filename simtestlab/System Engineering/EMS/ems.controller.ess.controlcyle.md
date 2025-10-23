@@ -1,3 +1,4 @@
+```puml
 @startuml
 title ESS Controller - Control Cycle Sequence
 
@@ -50,3 +51,4 @@ Handles:
  - SoC protection
 end note
 @enduml
+```

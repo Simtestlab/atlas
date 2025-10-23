@@ -1,3 +1,4 @@
+```puml
 @startuml
 title OpenEMS Edge - Controller Architecture
 
@@ -61,3 +62,4 @@ Controllers implement logic to:
 - Maintain state across cycles
 end note
 @enduml
+```

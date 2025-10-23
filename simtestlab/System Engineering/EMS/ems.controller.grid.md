@@ -1,3 +1,4 @@
+```puml
 @startuml
 title OpenEMS Edge - Grid Controllers Overview
 
@@ -34,3 +35,4 @@ ReactivePower -up-|> GridController
 RampLimiter -up-|> GridController
 VoltFreq -up-|> GridController
 @enduml
+```

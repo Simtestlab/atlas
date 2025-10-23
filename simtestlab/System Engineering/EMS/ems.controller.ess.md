@@ -1,3 +1,4 @@
+```puml
 @startuml
 title OpenEMS Edge - ESS Controller Architecture
 
@@ -60,3 +61,4 @@ Handles:
 end note
 
 @enduml
+```
