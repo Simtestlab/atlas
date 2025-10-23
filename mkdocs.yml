@@ -33,18 +33,7 @@ theme:
     - content.tooltips
     - content.grid 
   palette:
-    # Dark Mode
-    - scheme: slate
-      toggle:
-        icon: material/weather-sunny
-        name: Dark mode
-      primary: grey
-      accent: deep purple
-    # Light Mode
     - scheme: default
-      toggle:
-        icon: material/weather-night
-        name: Light mode
       primary: grey
       accent: deep orange
 
