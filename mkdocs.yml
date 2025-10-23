@@ -121,7 +121,7 @@ extra:
   generator: false
   comments: false
   auth_username: admin
-  auth_password: password
+  auth_password: simtestlab@123
   status:
     draft: In draft
     review: In review
