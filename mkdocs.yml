@@ -16,6 +16,8 @@ nav:
       - ... | SoftwareSpecifiactions/ApplicationSoftware/**
   - System Engineering: 
       - ... | System Engineering/**
+  - Digital Engineering: 
+      - ... | Digital Engineering/**
 theme:
   name: material
   custom_dir: simtestlab/custom_theme
