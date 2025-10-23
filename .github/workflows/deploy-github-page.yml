@@ -13,29 +13,27 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-
-      - name: Cache dependencies
+      - name: Cache pip dependencies
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
@@ -48,13 +46,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Build with MkDocs
+      - name: Clean previous build
         run: |
-          # Build the site
+          echo " Cleaning previous build..."
+          rm -rf site
+
+      - name: Build MkDocs site
+        run: |
+          echo " Building MkDocs site..."
           mkdocs build --clean
 
       - name: Inject credentials
@@ -62,7 +65,7 @@ jobs:
           DOCS_USERNAME: ${{ secrets.DOCS_USERNAME }}
           DOCS_PASSWORD: ${{ secrets.DOCS_PASSWORD }}
         run: |
-          # Replace default credentials with secrets if provided
+          echo " Injecting credentials..."
           find site -name "*.html" -exec sed -i "s/\"testuser\"/\"${DOCS_USERNAME:-admin}\"/g" {} \;
           find site -name "*.html" -exec sed -i "s/\"testpass\"/\"${DOCS_PASSWORD:-password}\"/g" {} \;
 
@@ -71,7 +74,6 @@ jobs:
         with:
           path: ./site
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
