@@ -97,6 +97,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js
   - javascripts/github-filters.js
+  - javascripts/auth.js
 
 
 
@@ -119,6 +120,8 @@ copyright: Copyright &copy; 2020-2025 by Simtestlab Sweden AB
 extra:
   generator: false
   comments: false
+  auth_username: admin
+  auth_password: password
   status:
     draft: In draft
     review: In review
