@@ -34,6 +34,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Clean pip cache
+        run: pip cache purge
+
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
