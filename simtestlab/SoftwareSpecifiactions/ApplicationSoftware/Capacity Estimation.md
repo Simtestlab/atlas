@@ -1,6 +1,6 @@
 ---
 comments: true
-title: Cell Balancing
+title: Capacity Estimation
 status: draft
 ---
 
@@ -69,6 +69,10 @@ deltaCoulomb = (soq_cc_hi - soq_cc_lo)
 Qcell_meas = deltaCoulomb / (soq_soc_hi - soq_soc_lo)
 
 ### d. Error calculation
+Definition:
+An error is defined in the same unit as the corresponding value is, e.g. if a capacity is in Ah, then the error will be in Ah. 
+Moreover, the error is symmetric. This means that if a cell nominal value is 65Ah and the error is 5Ah, then we know that the real capacity value lays between 60Ah and 70Ah.
+
 In order to estimate an measurement error, one wants to know what the average current (C-rate) was during the charging phase, and what the minimum and maximum current were.
 The average current (charging C-rate) can be derived by soq_c_rate = deltaCoulomb / (soq_t_hi -soq_t_lo).
 
@@ -80,4 +84,15 @@ However, this assumes that all the below conditions have been met. If one of the
 
 ## 2. Capacity filter
 The filter shall retrieve the capacity stored in NVRAM for each cell Qcell_est with their resp. error Qcell_est_err.
-Note: the initial values of Qcell_est and Qcell_est_err stored in NVRAM are resp. the cell capacity nominal value and half of the cell capacity nominal value.
+Note: the initial values of Qcell_est and Qcell_est_err stored in NVRAM are both equal to the cell capacity nominal value.
+
+The filter should merge the measured values with the stored values and later update the stored values with its output.
+The filter will generate an output based on the below formula:
+
+Qcell_est_filt = alpha*Qcell_est + (1-alpha)*Qcell_meas. Where alpha is between 0 and 1.
+alpha = Qcell_meas_err / (Qcell_est_err + Qcell_meas_err)
+
+Qcell_est_filt_err = 2*Qcell_est_err*Qcell_meas_err / (Qcell_est_err + Qcell_meas_err)
+
+Qcell_est_filt then replaces Qcell_est in NVRAM.
+Qcell_est_filt_err then replaces Qcell_est_err in NVRAM.
