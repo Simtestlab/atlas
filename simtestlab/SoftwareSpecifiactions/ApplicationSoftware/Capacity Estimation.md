@@ -92,5 +92,7 @@ The filter will generate an output based on the below formula:
 Qcell_est_filt = alpha*Qcell_est + (1-alpha)*Qcell_meas. Where alpha is between 0 and 1.
 alpha = Qcell_meas_err / (Qcell_est_err + Qcell_meas_err)
 
-Qcell_est_filt then replaces Qcell_est in NVRAM.
+Qcell_est_filt_err = 2*Qcell_est_err*Qcell_meas_err / (Qcell_est_err + Qcell_meas_err)
 
+Qcell_est_filt then replaces Qcell_est in NVRAM.
+Qcell_est_filt_err then replaces Qcell_est_err in NVRAM.
