@@ -1,6 +1,6 @@
 ---
 comments: true
-title: Cell Balancing
+title: Capacity Estimation
 status: draft
 ---
 
