@@ -97,14 +97,15 @@ These are calibration parameters.
 - When the current is equal or below the continuous limit, there is no time limit for how long it can be used.
 
 **Long Pulse Operation:**
-- When the current goes above the continuous limit and below the long pulse, the current excess `Abs(current - continuous current limit)` is integrated over time and the dynamic current limit `I_long_x = I_long_x_lim`.
-- When the integral reaches `I_long_x_lim * Dt_long_lim`, then the current limit `I_long_x` falls to continuous limit.
+- When the current goes above the continuous limit, the current excess `Abs(current - continuous current limit)` is integrated over time and the dynamic current limit `I_long_x = I_long_x_lim`.
+- When the integral reaches `(I_long_x_lim - I_cont_x_lim) * Dt_long_lim`, then the current limit `I_long_x` falls to continuous limit.
 - **Note:** The integral needs to recover by having the current going below the continuous limit for a certain amount of time.
 
 **Short Pulse Operation:**
-- When the current goes above the long pulse and below or equal to the short pulse, the current excess `Abs(current - long current limit)` is integrated over time and the dynamic current limit `I_short_x = I_short_x_lim`.
-- When the integral reaches `I_short_x_lim * Dt_short_lim`, then the current limit `I_short_x` falls to long limit.
-- **Note:** The integral needs to recover by having the current going below the long limit for a certain amount of time.
+- When the current goes above the continuous limit, the current excess `Abs(current - continuous current limit)` is integrated over time and the dynamic current limit `I_short_x = I_short_x_lim`.
+- When the integral reaches `(I_short_x_lim - I_cont_x_lim) * Dt_short_lim`, then the current limit `I_short_x` falls to continuous limit.
+- **Note:** The integral needs to recover by having the current going below the continuous limit for a certain amount of time.
+- **Note:** This integral will saturate to its maximum value `(I_short_x_lim - I_cont_x_lim) * Dt_short_lim` before the long one.
 
 **Temperature Dependencies:**
 - If the maximum temperature gets close to `T_op_max`, both `I_short_chg` and `I_long_chg` should converge rapidly towards `I_cont_chg`.
