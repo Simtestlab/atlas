@@ -23,7 +23,7 @@ The Fleet Manager is responsible for the strategic oversight of the fleet's life
 - **Cost Control:** Fuel management and overall budget adherence.  
 - **Compliance:** Ensuring adherence to safety and regulatory standards (e.g., HOS, IFTA).
 
-<img width="676" height="369" alt="Image" src="https://github.com/user-attachments/assets/0d74d9dc-d187-4117-a261-f2d247026d7d" />
+<img width="676" height="369" alt="Image" src="fleetmanagement.png" />
 
 ## Fleet Management Modules
 
@@ -37,7 +37,7 @@ The Fleet Manager is responsible for the strategic oversight of the fleet's life
 8. Integration (API) Module  
 9. Inventory Control  
 
-![Image](https://github.com/user-attachments/assets/68fe992c-7029-4c2a-937a-7e4d123fd149)
+![Image](image.jpg)
 
 ## Fleet Management System Modules
 

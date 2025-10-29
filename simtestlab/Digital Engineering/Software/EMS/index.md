@@ -18,7 +18,7 @@ The OpenEMS Edge functions as the local interface, actively interacting with the
 
 OpenEMS follows the Input-Process-Output (IPO) model, defining the internal execution cycle:
 
-<img width="215" height="153" alt="Image" src="https://github.com/user-attachments/assets/ffc864ae-f52c-4eef-92a6-f695e02aa9ff" />
+<img width="215" height="153" alt="Image" src="input.png" />
 
 - **Input**: Collects all relevant information and provides it as a process image.
 - **Process**: Runs algorithms and tasks based on the process image information to evaluate whether a digital output should be turned on.
@@ -32,7 +32,7 @@ The Scheduler manages the execution of all energy management (EM) algorithms, de
 - Schedule based on a Daily/JSCalendar
 - Simple alphabetical execution
 
-<img width="512" height="191" alt="Image" src="https://github.com/user-attachments/assets/0aacb38f-b580-4c49-80a6-2772ebc0e437" />
+<img width="512" height="191" alt="Image" src="scheduler.png" />
 
 The Scheduler resolves conflicts when multiple controllers attempt to set the same output by prioritizing commands.
 
@@ -40,7 +40,7 @@ The Scheduler resolves conflicts when multiple controllers attempt to set the sa
 
 The Controller holds the core business logic and algorithms of OpenEMS that control the hardware. It manages the decision-making process for determining what command should be passed to the hardware.
 
-<img width="289" height="265" alt="Image" src="https://github.com/user-attachments/assets/5a2cc577-5970-4f76-adbd-c66be23df35a" />
+<img width="289" height="265" alt="Image" src="controller.png" />
 
 Controllers operate in two modes:
 
@@ -86,13 +86,13 @@ During each cycle, OpenEMS performs a "Switch Process Image" operation that copi
 
 OpenEMS communicates with multiple external devices and services, each operating at its own timing and speed. These interactions happen using asynchronous threads, meaning data updates can occur unpredictably and independently of the system’s computing cycle. To maintain data consistency, OpenEMS uses Cycle Synchronization, ensuring that controllers always work with a synchronized snapshot of data for the entire duration of the cycle.
 
-<img width="341" height="385" alt="Image" src="https://github.com/user-attachments/assets/8d7fe136-bcbb-4f89-aa24-218d7006c99a" />
+<img width="341" height="385" alt="Image" src="cycle.png" />
 
 #### Architecture Schema
 
 The OpenEMS Edge architecture is structured to efficiently separate hardware communication from control logic. This design ensures flexibility, predictability, and stability while simplifying the integration of new devices and components. Hardware devices are abstracted using:
 
-<img width="214" height="202" alt="Image" src="https://github.com/user-attachments/assets/ea18c746-e158-46b7-8089-92148a5c2d7a" />
+<img width="214" height="202" alt="Image" src="Architectureschema.png" />
 
 ### Configuration Management Methods
 OpenEMS Edge utilizes the OSGi Configuration Admin Service for configuration management, offering several methods:
