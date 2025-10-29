@@ -1,88 +1,4 @@
-# Live Collaboration (Collaborative Editing)
-
-## Cursor Broadcasting
-
-![cursor movement demonstration](mouse_cursor.png)
-
-### Real-time Cursor Updates
-```js
-supabase.channel('cursor-room').send({
-  type: 'broadcast',
-  event: 'cursor-update',
-  payload: {
-    userId: currentUserId.current,
-    x,
-    y,
-    color: userColor.current,
-    name: displayName,
-    avatarUrl,
-    lastUpdated: Date.now(),
-  }
-});
-```
-
-The payload is broadcasted to all users connected to the "channel". The broadcast is sent only once for each change and is not stored.
-
-### Cursor Management Features
-- **Receiving and Displaying Cursors:**
-  - Subscribes to 'cursor-room' channel from others
-  - Updates local state (map of userId → cursor info)
-  - Renders a custom cursor on canvas
-
-- **Cursor Timeout:**
-  - Uses a timeout to remove cursors if not updated in 50s
-  - Prevents ghost cursors from disconnected users
-
-**Example:** When you move your cursor, its position is broadcasted and other users see your live position.
-
-## Nodes and Edges Broadcast
-
-### Node Updates
-```js
-type: "broadcast",
-event: "NODES_UPDATED",
-payload: {
-  userId: localUserId.current,
-  nodes,
-}
-```
-
-The payload contains userId and nodes data including:
-- Node ID
-- Position
-- Label
-- Other node-specific properties
-
-### Edge Updates
-```js
-type: "broadcast",
-event: "EDGES_UPDATED",
-payload: {
-  userId: localUserId.current,
-  edges,
-}
-```
-
-The payload contains:
-- User ID
-- Edge data (ID, source node, target node)
-
-### Update Management
-- **Receiving Updates:**
-  - On node-update, system checks:
-    - If current user is dragging that node → Update ignored
-    - Otherwise → Node position updated in state
-
-- **Sync & Conflict Prevention:**
-  - Implements drag suppression by userId and nodeId
-  - Only updates nodes not being dragged by current user
-
-**Example:** When dragging "Node A", other users see fluid synchronized movement. No bounce-back occurs due to suppression of incoming updates during drag operations.
-![Node movement demonstration](node_movement.png)
-![Node movement demonstration](node_movement2.png)
-
-
-## Collaborative Commenting System
+# Collaborative Commenting System
 
 ### Overview
 This module introduces a context-aware commenting system into the collaborative System Engineering Tool built using Next.js, React Flow, and Supabase. It enables users working on the same projectId and branchId to communicate contextually using structured comments that can reference users and nodes dynamically.
@@ -114,7 +30,7 @@ user12 released this branch
 
 ### System Architecture
 
-#### 🔹 1. Input Parsing
+####  1. Input Parsing
 - The system listens for special characters:
   - `@` triggers a dropdown of users in the current project
   - `#` triggers a dropdown of available nodes
@@ -128,15 +44,15 @@ user12 released this branch
   - Project and branch context
   - Timestamp
 
-#### 🔹 2. Realtime Communication
+####  2. Realtime Communication
 - Supabase Broadcast is used to emit the comment immediately to other users in the same projectId and branchId
 - This ensures that all collaborators receive the message in real time
 
-#### 🔹 3. Persistent Storage
+####  3. Persistent Storage
 - After emitting the comment, it is stored in the comments table in Supabase for historical retrieval
 - This allows users who join later or refresh the page to still see the full comment history
 
-#### 🔹 4. Retrieval and Display
+####  4. Retrieval and Display
 - On project/branch load, comments are fetched from the database
 - New comments are also appended via Realtime listeners
 - Comments containing @ and # are rendered with stylized components
