@@ -18,7 +18,7 @@ The OpenEMS Edge functions as the local interface, actively interacting with the
 
 OpenEMS follows the Input-Process-Output (IPO) model, defining the internal execution cycle:
 
-<img width="215" height="153" alt="Image" src="https://github.com/user-attachments/assets/ffc864ae-f52c-4eef-92a6-f695e02aa9ff" />
+<img width="215" height="153" alt="Image" src="input.png" />
 
 - **Input**: Collects all relevant information and provides it as a process image.
 - **Process**: Runs algorithms and tasks based on the process image information to evaluate whether a digital output should be turned on.
@@ -32,7 +32,7 @@ The Scheduler manages the execution of all energy management (EM) algorithms, de
 - Schedule based on a Daily/JSCalendar
 - Simple alphabetical execution
 
-<img width="512" height="191" alt="Image" src="https://github.com/user-attachments/assets/0aacb38f-b580-4c49-80a6-2772ebc0e437" />
+<img width="512" height="191" alt="Image" src="scheduler.png" />
 
 The Scheduler resolves conflicts when multiple controllers attempt to set the same output by prioritizing commands.
 
@@ -40,7 +40,7 @@ The Scheduler resolves conflicts when multiple controllers attempt to set the sa
 
 The Controller holds the core business logic and algorithms of OpenEMS that control the hardware. It manages the decision-making process for determining what command should be passed to the hardware.
 
-<img width="289" height="265" alt="Image" src="https://github.com/user-attachments/assets/5a2cc577-5970-4f76-adbd-c66be23df35a" />
+<img width="289" height="265" alt="Image" src="controller.png" />
 
 Controllers operate in two modes:
 
@@ -51,7 +51,7 @@ Controllers operate in two modes:
 
 In OpenEMS Edge, Bridges are components designed to simplify the implementation and integration of hardware devices that use specific standardized physical connection layers and communication protocols. Essentially, a Bridge handles the low-level communication details, allowing other OpenEMS components (like devices and controllers) to interact with the hardware more easily.
 
-1. Modbus Bridge
+Modbus Bridge
 
 The Modbus Bridge supports both Modbus/TCP and Modbus/RTU protocols, commonly used for communication with devices like inverters and meters.
 
@@ -61,15 +61,15 @@ Modbus/RTU: Facilitates serial communication via an RS485 bus.
 
 The Modbus Bridge manages the execution of Modbus tasks, prioritizing write requests and optimizing read requests to occur just when their values are needed. 
 
-2. HTTP Bridge
+HTTP Bridge
 
 The HTTP Bridge is used for devices that communicate via the HTTP protocol, often employing RESTful APIs. This includes various hardware devices like electric meters and relays. 
 
-3. M-Bus Bridge
+M-Bus Bridge
 
 The M-Bus Bridge supports the M-Bus (Meter-Bus) protocol, a standard for connecting to metering devices such as electricity, gas, or water meters. 
 
-4. OneWire Bridge
+OneWire Bridge
 
 The OneWire Bridge connects to devices using the OneWire protocol, commonly found in home automation for sensors like thermometers. OpenEMS's implementation communicates directly with the OneWire bus master (e.g., a USB dongle) and does not require the OneWire File System (OWFS).
 
@@ -86,13 +86,13 @@ During each cycle, OpenEMS performs a "Switch Process Image" operation that copi
 
 OpenEMS communicates with multiple external devices and services, each operating at its own timing and speed. These interactions happen using asynchronous threads, meaning data updates can occur unpredictably and independently of the system’s computing cycle. To maintain data consistency, OpenEMS uses Cycle Synchronization, ensuring that controllers always work with a synchronized snapshot of data for the entire duration of the cycle.
 
-<img width="341" height="385" alt="Image" src="https://github.com/user-attachments/assets/8d7fe136-bcbb-4f89-aa24-218d7006c99a" />
+<img width="341" height="385" alt="Image" src="cycle.png" />
 
 #### Architecture Schema
 
 The OpenEMS Edge architecture is structured to efficiently separate hardware communication from control logic. This design ensures flexibility, predictability, and stability while simplifying the integration of new devices and components. Hardware devices are abstracted using:
 
-<img width="214" height="202" alt="Image" src="https://github.com/user-attachments/assets/ea18c746-e158-46b7-8089-92148a5c2d7a" />
+<img width="214" height="202" alt="Image" src="Architectureschema.png" />
 
 ### Configuration Management Methods
 OpenEMS Edge utilizes the OSGi Configuration Admin Service for configuration management, offering several methods:
@@ -220,9 +220,9 @@ Implementing a new hardware Device in OpenEMS Edge involves defining, coding, an
    - Configuring the device via the UI or console.
    - Creating a runtime Instance, which is the operational copy of the device driver ready to perform its API calls and communication.
 
-## OpenEMS Edge Build Guide
+### OpenEMS Edge Build Guide
 
-### 1. Building with Eclipse IDE (Manual Development)
+### Building with Eclipse IDE (Manual Development)
 
 1. Open the `io.openems.edge.application` project in Eclipse IDE and open the `EdgeApp.bndrun` file.
 2. Press [Export] to start the Export Wizard Selection assistant.
@@ -232,7 +232,7 @@ Implementing a new hardware Device in OpenEMS Edge involves defining, coding, an
 
 This creates a "fat JAR" file, including all bundles. It can be executed by running `java -jar openems.jar` in a console.
 
-### 2. Building with Gradle (Automated & Production)
+### Building with Gradle (Automated & Production)
 
 Gradle is a build tool used in the OpenEMS project to compile the JAR files and execute other tasks like building the documentation webpage using Antora and the Javadocs. To build OpenEMS Edge:
 
@@ -241,7 +241,7 @@ Gradle is a build tool used in the OpenEMS project to compile the JAR files and 
 
 ## OpenEMS UI
 
-### 1. Setup Visual Studio Code
+### Setup Visual Studio Code
 
 1. Download and install Node.js LTS.
 2. Download and install Visual Studio Code.
@@ -258,7 +258,7 @@ Gradle is a build tool used in the OpenEMS project to compile the JAR files and 
 
    - `npm install`
 
-### 2. Run OpenEMS UI
+### Run OpenEMS UI
 
 In Visual Studio's integrated terminal, type:
 
@@ -268,11 +268,11 @@ ng serve -c openems-edge-dev
 
 Open a browser at [http://localhost:4200/](http://localhost:4200).
 
-### 3. Architecture
+### Architecture
 
 The OpenEMS UI is a real-time user interface for web browsers and smartphones. It features an Adaptive User Interface, meaning its visualization dynamically adjusts based on the actual configuration of the connected OpenEMS Edge device. It connects to the OpenEMS Edge or OpenEMS Backend via WebSockets for real-time data communication.
 
-### 4. Build OpenEMS UI
+### Build OpenEMS UI
 
 The build process is executed using the Angular CLI (`ng build` command). Configuration is specified during the build process to target different environments, such as:
 
@@ -281,13 +281,14 @@ The build process is executed using the Angular CLI (`ng build` command). Config
 
 This process compiles the source code into deployable artifacts that can be run outside of an IDE.
 
-### 5. Implementation Widgets
+### Implementation Widgets
 
 - **FlatWidget**: the FlatWidget serves as a compact display element that presents essential or general data. It functions as a button that, when interacted with, opens a more detailed ModalWidget. This design pattern ensures a clean and efficient user interface, displaying only critical information at first glance while providing access to detailed views upon user interaction.
 - **Modal Widget**: At the time of this documentation, multiple implementations of ModalWidgets exist. However, the unit-testable version is considered the best practice. This approach allows for better testing and validation of the widget's functionality, ensuring reliability and maintainability.
 - **Chart**: Charts are primarily utilized in the History View to display historical data. In this context, they should behave similarly to ModalWidgets in the Live View. This means that charts should not be immediately visible in the History View but should open upon clicking on a FlatWidget, providing users with detailed historical data in a modal format.
 
 #### Device Implementations
+
 A **Device** in OpenEMS Edge represents a specific piece of hardware (e.g., battery, inverter, meter) and its corresponding software driver. These devices are categorized by function and include:
 ### Energy Storage Systems (ESS) / Batteries
 
@@ -354,4 +355,209 @@ Sum - Calculates and holds aggregated information on energy flows, such as summe
 AppManager / App - Services for managing and running predefined or custom applications within OpenEMS Edge.
 
 #### Edge-2-Edge
-<p>This feature allows one OpenEMS Edge instance (**Master**) to connect to and manage devices attached to another OpenEMS Edge instance (**Slave**) via Modbus, enabling distributed or clustered energy management.</p>
+This feature allows one OpenEMS Edge instance (**Master**) to connect to and manage devices attached to another OpenEMS Edge instance (**Slave**) via Modbus, enabling distributed or clustered energy management.
+
+Absolutely. Here’s the fully rewritten, professionally structured, and concise version of your **OpenEMS Backend** documentation — aligned with the official OpenEMS documentation style and hierarchy.
+
+## OpenEMS Backend
+
+The **OpenEMS Backend** is a cloud-native, modular platform built to aggregate, monitor, and control multiple **OpenEMS Edge** systems. It provides centralized data storage, user management, and system-wide coordination through an extensible, service-based architecture.
+
+### Architecture
+
+The OpenEMS Backend is implemented in **Java**, following a **modular OSGi (Open Service Gateway Initiative)** framework using **Apache Felix**.
+This design enables flexibility, modular deployment, and high scalability across single-site or multi-site energy management environments.
+
+#### Core Architectural Principles
+
+* **Modularity:**
+  Each functional capability—such as storage, API, or authentication—is an independent, hot-swappable **OSGi bundle**.
+
+* **Event-Driven Communication:**
+  Components communicate through a shared **event bus**, ensuring loose coupling and real-time responsiveness.
+
+* **Database Abstraction:**
+  The backend supports multiple database types, allowing developers to plug in or replace persistence layers without code changes.
+
+* **Microservices-Ready:**
+  While it can run as a monolithic service, the modular design allows decomposition into **microservices** for containerized or Kubernetes environments.
+
+#### Data and Control Flow
+
+| Flow                 | Direction           | Protocol                        | Purpose                                                                            |
+| :------------------- | :------------------ | :------------------------------ | :--------------------------------------------------------------------------------- |
+| **Upward Data**      | Edge → Backend → UI | WebSocket (JSON-RPC), HTTPS/WSS | Aggregated Edge data flows upward for visualization and analytics.                 |
+| **Storage**          | Backend → Database  | Internal DB connections         | Metadata stored in PostgreSQL; time-series data stored in InfluxDB or TimescaleDB. |
+| **Downward Control** | UI → Backend → Edge | HTTPS/WSS, WebSocket (JSON-RPC) | Commands and configuration changes sent from UI to Edge.                           |
+
+#### Deployment Topologies
+
+* **Single-Site:** One Edge connected to a single Backend instance.
+* **Multi-Site:** Multiple Edges managed by one Backend for fleet-level supervision.
+* **Hierarchical:** Multiple Backends communicate in parent-child relationships, enabling distributed or regional aggregation.
+
+### Backend-to-Backend
+
+The OpenEMS Backend exposes both **REST** and **JSON-RPC** interfaces to support communication between backend instances, as well as integration with external systems and UIs.
+
+#### API Interfaces
+
+| API Type     | Endpoint                                               | Use Case                                       | Authentication                              |
+| :----------- | :----------------------------------------------------- | :--------------------------------------------- | :------------------------------------------ |
+| **REST**     | `GET /rest/channel/{edgeId}/{componentId}/{channelId}` | Retrieve current or historical channel values. | API Token, Role-Based Access Control (RBAC) |
+| **JSON-RPC** | `POST /jsonrpc`                                        | Execute control commands or batch operations.  | API Token, RBAC                             |
+
+#### Key Use Cases
+
+* Federated backend communication in **hierarchical deployments**.
+* Integration with **third-party monitoring or analytics tools**.
+* Data export and synchronization between different backend instances.
+
+### Metadata
+
+The **Metadata Service** manages non-time-series information about connected systems, components, and users.
+
+#### Core Functions
+
+| Function              | Description                                            | Storage                            |
+| :-------------------- | :----------------------------------------------------- | :--------------------------------- |
+| Device Configuration  | Stores device and Edge setup details.                  | **PostgreSQL** or equivalent RDBMS |
+| Device Hierarchy      | Maintains parent-child relationships and dependencies. |                                    |
+| Status & Availability | Tracks system and component operational states.        |                                    |
+| Access Control        | Implements **RBAC** and user permissions.              |                                    |
+
+#### Features
+
+* Persistent configuration management for all connected Edges.
+* Role-based access and hierarchical user privileges.
+* API-based retrieval for external management systems.
+
+### Timedata
+
+The **Timedata Service** is responsible for ingesting, storing, and querying time-series data received from the Edge systems.
+
+#### Core Functions
+
+| Function               | Description                                      | Recommended Storage                    | Performance Optimization         |
+| :--------------------- | :----------------------------------------------- | :------------------------------------- | :------------------------------- |
+| Real-Time Ingestion    | Receives and validates live data streams.        | **InfluxDB**                           | Batch writes and async commit    |
+| Historical Storage     | Stores large-scale time-series datasets.         | **TimescaleDB** (PostgreSQL extension) | Retention & compression policies |
+| Aggregation & Querying | Supports aggregated and filtered data retrieval. | Custom OSGi implementations            | Indexed queries for performance  |
+
+#### Highlights
+
+* Supports pluggable database implementations.
+* Designed for high-frequency telemetry from multiple Edge devices.
+* Configurable retention policies to manage data growth.
+
+### Service
+
+The **Service Layer** orchestrates internal communication, synchronization, and lifecycle management of OSGi bundles.
+Each service implements a clearly defined interface and can be independently deployed or replaced.
+
+#### Core Service Types
+
+* **Websocket & API Services:** Handle inbound and outbound communication with Edge devices and the UI.
+* **Storage Services:** Abstract data persistence for metadata and timedata.
+* **Authentication Services:** Manage token verification, session validation, and user identity.
+* **Event Bus Service:** Propagates internal events and messages between bundles.
+
+#### Key Characteristics
+
+* **Dynamic Discovery:** Services register and discover each other at runtime through the OSGi registry.
+* **Hot-Swapping:** Bundles can be updated or replaced without system downtime.
+* **Extensibility:** Developers can add new custom services for analytics, monitoring, or device-specific integrations.
+
+### Deploy
+
+The OpenEMS Backend can be deployed on **Debian/Ubuntu** or in **Docker** containers.
+Both deployment methods require **Java 17+** and a suitable configuration directory (`/etc/openems/backend`).
+
+#### Deploy on Debian/Ubuntu
+
+This method provides a native service setup for production environments.
+
+#### **Steps**
+
+**Install Dependencies**
+
+   ```bash
+   sudo apt update
+   sudo apt install openjdk-17-jre git
+   ```
+
+**Build Backend**
+
+   ```bash
+   git clone https://github.com/OpenEMS/openems.git
+   cd openems
+   ./gradlew buildBackend
+   ```
+
+**Install and Configure**
+
+   * Copy the built JAR to `/opt/openems/backend/`
+   * Create configuration directory `/etc/openems/backend/`
+   * Add configuration files (database, services, Edge endpoints)
+
+**Create Systemd Service**
+
+   ```bash
+   sudo nano /etc/systemd/system/openems-backend.service
+   ```
+
+   Example:
+
+   ```
+   [Unit]
+   Description=OpenEMS Backend
+   After=network.target
+
+   [Service]
+   ExecStart=/usr/bin/java -jar /opt/openems/backend/openems-backend.jar
+   WorkingDirectory=/opt/openems/backend
+   User=openems
+   Restart=always
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+**Enable and Start**
+
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl enable openems-backend
+   sudo systemctl start openems-backend
+   ```
+
+#### Deploy to Docker
+
+Docker provides a lightweight and consistent runtime for deploying OpenEMS Backend.
+
+#### **Steps**
+
+**Pull Latest Image**
+
+   ```bash
+   docker pull openems/openems-backend:latest
+   ```
+
+**Run Container**
+
+   ```bash
+   docker run -d \
+     --name openems-backend \
+     -p 8080:8080 -p 8084:8084 \
+     -v /path/to/config:/etc/openems \
+     openems/openems-backend:latest
+   ```
+
+   * **Port 8080** – Edge WebSocket communication
+   * **Port 8084** – REST/JSON-RPC API for UI and external systems
+
+**Advantages**
+
+   * Fast setup and consistent environments.
+   * Easy orchestration via **Docker Compose** or **Kubernetes**.
+   * Seamless version upgrades and rollback.
