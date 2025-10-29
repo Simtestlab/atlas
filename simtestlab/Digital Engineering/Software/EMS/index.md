@@ -220,7 +220,7 @@ Implementing a new hardware Device in OpenEMS Edge involves defining, coding, an
    - Configuring the device via the UI or console.
    - Creating a runtime Instance, which is the operational copy of the device driver ready to perform its API calls and communication.
 
-## OpenEMS Edge Build Guide
+### OpenEMS Edge Build Guide
 
 ### Building with Eclipse IDE (Manual Development)
 
@@ -288,6 +288,7 @@ This process compiles the source code into deployable artifacts that can be run 
 - **Chart**: Charts are primarily utilized in the History View to display historical data. In this context, they should behave similarly to ModalWidgets in the Live View. This means that charts should not be immediately visible in the History View but should open upon clicking on a FlatWidget, providing users with detailed historical data in a modal format.
 
 #### Device Implementations
+
 A **Device** in OpenEMS Edge represents a specific piece of hardware (e.g., battery, inverter, meter) and its corresponding software driver. These devices are categorized by function and include:
 ### Energy Storage Systems (ESS) / Batteries
 
@@ -358,7 +359,7 @@ This feature allows one OpenEMS Edge instance (**Master**) to connect to and man
 
 Absolutely. Here’s the fully rewritten, professionally structured, and concise version of your **OpenEMS Backend** documentation — aligned with the official OpenEMS documentation style and hierarchy.
 
-# OpenEMS Backend
+## OpenEMS Backend
 
 The **OpenEMS Backend** is a cloud-native, modular platform built to aggregate, monitor, and control multiple **OpenEMS Edge** systems. It provides centralized data storage, user management, and system-wide coordination through an extensible, service-based architecture.
 
