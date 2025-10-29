@@ -363,12 +363,12 @@ Absolutely. Here’s the fully rewritten, professionally structured, and concise
 
 The **OpenEMS Backend** is a cloud-native, modular platform built to aggregate, monitor, and control multiple **OpenEMS Edge** systems. It provides centralized data storage, user management, and system-wide coordination through an extensible, service-based architecture.
 
-## Architecture
+### Architecture
 
 The OpenEMS Backend is implemented in **Java**, following a **modular OSGi (Open Service Gateway Initiative)** framework using **Apache Felix**.
 This design enables flexibility, modular deployment, and high scalability across single-site or multi-site energy management environments.
 
-### Core Architectural Principles
+#### Core Architectural Principles
 
 * **Modularity:**
   Each functional capability—such as storage, API, or authentication—is an independent, hot-swappable **OSGi bundle**.
@@ -382,7 +382,7 @@ This design enables flexibility, modular deployment, and high scalability across
 * **Microservices-Ready:**
   While it can run as a monolithic service, the modular design allows decomposition into **microservices** for containerized or Kubernetes environments.
 
-### Data and Control Flow
+#### Data and Control Flow
 
 | Flow                 | Direction           | Protocol                        | Purpose                                                                            |
 | :------------------- | :------------------ | :------------------------------ | :--------------------------------------------------------------------------------- |
@@ -390,34 +390,34 @@ This design enables flexibility, modular deployment, and high scalability across
 | **Storage**          | Backend → Database  | Internal DB connections         | Metadata stored in PostgreSQL; time-series data stored in InfluxDB or TimescaleDB. |
 | **Downward Control** | UI → Backend → Edge | HTTPS/WSS, WebSocket (JSON-RPC) | Commands and configuration changes sent from UI to Edge.                           |
 
-### Deployment Topologies
+#### Deployment Topologies
 
 * **Single-Site:** One Edge connected to a single Backend instance.
 * **Multi-Site:** Multiple Edges managed by one Backend for fleet-level supervision.
 * **Hierarchical:** Multiple Backends communicate in parent-child relationships, enabling distributed or regional aggregation.
 
-## Backend-to-Backend
+### Backend-to-Backend
 
 The OpenEMS Backend exposes both **REST** and **JSON-RPC** interfaces to support communication between backend instances, as well as integration with external systems and UIs.
 
-### API Interfaces
+#### API Interfaces
 
 | API Type     | Endpoint                                               | Use Case                                       | Authentication                              |
 | :----------- | :----------------------------------------------------- | :--------------------------------------------- | :------------------------------------------ |
 | **REST**     | `GET /rest/channel/{edgeId}/{componentId}/{channelId}` | Retrieve current or historical channel values. | API Token, Role-Based Access Control (RBAC) |
 | **JSON-RPC** | `POST /jsonrpc`                                        | Execute control commands or batch operations.  | API Token, RBAC                             |
 
-### Key Use Cases
+#### Key Use Cases
 
 * Federated backend communication in **hierarchical deployments**.
 * Integration with **third-party monitoring or analytics tools**.
 * Data export and synchronization between different backend instances.
 
-## Metadata
+### Metadata
 
 The **Metadata Service** manages non-time-series information about connected systems, components, and users.
 
-### Core Functions
+#### Core Functions
 
 | Function              | Description                                            | Storage                            |
 | :-------------------- | :----------------------------------------------------- | :--------------------------------- |
@@ -426,17 +426,17 @@ The **Metadata Service** manages non-time-series information about connected sys
 | Status & Availability | Tracks system and component operational states.        |                                    |
 | Access Control        | Implements **RBAC** and user permissions.              |                                    |
 
-### Features
+#### Features
 
 * Persistent configuration management for all connected Edges.
 * Role-based access and hierarchical user privileges.
 * API-based retrieval for external management systems.
 
-## Timedata
+### Timedata
 
 The **Timedata Service** is responsible for ingesting, storing, and querying time-series data received from the Edge systems.
 
-### Core Functions
+#### Core Functions
 
 | Function               | Description                                      | Recommended Storage                    | Performance Optimization         |
 | :--------------------- | :----------------------------------------------- | :------------------------------------- | :------------------------------- |
@@ -444,40 +444,40 @@ The **Timedata Service** is responsible for ingesting, storing, and querying tim
 | Historical Storage     | Stores large-scale time-series datasets.         | **TimescaleDB** (PostgreSQL extension) | Retention & compression policies |
 | Aggregation & Querying | Supports aggregated and filtered data retrieval. | Custom OSGi implementations            | Indexed queries for performance  |
 
-### Highlights
+#### Highlights
 
 * Supports pluggable database implementations.
 * Designed for high-frequency telemetry from multiple Edge devices.
 * Configurable retention policies to manage data growth.
 
-## Service
+### Service
 
 The **Service Layer** orchestrates internal communication, synchronization, and lifecycle management of OSGi bundles.
 Each service implements a clearly defined interface and can be independently deployed or replaced.
 
-### Core Service Types
+#### Core Service Types
 
 * **Websocket & API Services:** Handle inbound and outbound communication with Edge devices and the UI.
 * **Storage Services:** Abstract data persistence for metadata and timedata.
 * **Authentication Services:** Manage token verification, session validation, and user identity.
 * **Event Bus Service:** Propagates internal events and messages between bundles.
 
-### Key Characteristics
+#### Key Characteristics
 
 * **Dynamic Discovery:** Services register and discover each other at runtime through the OSGi registry.
 * **Hot-Swapping:** Bundles can be updated or replaced without system downtime.
 * **Extensibility:** Developers can add new custom services for analytics, monitoring, or device-specific integrations.
 
-## Deploy
+### Deploy
 
 The OpenEMS Backend can be deployed on **Debian/Ubuntu** or in **Docker** containers.
 Both deployment methods require **Java 17+** and a suitable configuration directory (`/etc/openems/backend`).
 
-### Deploy on Debian/Ubuntu
+#### Deploy on Debian/Ubuntu
 
 This method provides a native service setup for production environments.
 
-#### Steps
+#### **Steps**
 
 **Install Dependencies**
 
@@ -531,11 +531,11 @@ This method provides a native service setup for production environments.
    sudo systemctl start openems-backend
    ```
 
-### Deploy to Docker
+#### Deploy to Docker
 
 Docker provides a lightweight and consistent runtime for deploying OpenEMS Backend.
 
-#### Steps
+#### **Steps**
 
 **Pull Latest Image**
 
