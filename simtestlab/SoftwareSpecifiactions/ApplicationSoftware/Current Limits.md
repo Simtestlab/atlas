@@ -141,7 +141,7 @@ V_cell(k+1) = U_ocv(k) + R(k) × I_hrd_x(k)
 Where:
 - `R(k)` is the internal resistance of the cell for a given SoC and temperature (also called DCIR)
 - `R(k)` is unknown but from the specifications its value is normally between [`Rmin`; `Rmax`]
-- `U_ocv(k)` is obtained by using the SoC on the inverse OCV table
+- `U_ocv(k)` is obtained by using the SoC on the inverse OCV long rest table.
 
 ### Hard Limit Calculations
 
