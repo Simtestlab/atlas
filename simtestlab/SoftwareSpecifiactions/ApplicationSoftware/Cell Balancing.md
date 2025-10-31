@@ -61,6 +61,10 @@ If there is an imbalance, identify which cell(s) need balancing:
 
 The balancing shall stop if the BMS detect a current high enough to compromise the relaxation (see relaxation parameters in Soc estimation).
 
+### c. Minimum soc level:
+
+The cells shall never balancing below a certain soc. If a cell has a soc lower than a certain threshold (e.g. 3%), it shall not balance in order to avoid depletion. Likewise, if a cell has a very low soc, the other cells should not balance below that threshold.
+
 ## 2. Balancing time estimate:
 
 ### a. Energy to be bled
